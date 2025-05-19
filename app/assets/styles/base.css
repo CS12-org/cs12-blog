@@ -1,0 +1,11 @@
+body {
+  @apply selection:bg-transparent selection:decoration-wavy selection:underline bg-base text-text;
+}
+
+button, a {
+  cursor: pointer;
+}
+
+* {
+  @apply focus-visible:outline-lavender focus-visible:outline-2 outline-offset-2;
+}

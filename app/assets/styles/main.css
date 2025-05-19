@@ -1,0 +1,36 @@
+@import "tailwindcss";
+@import "tailwindcss-animated";
+
+@import "./palette.css";
+@import "./base.css";
+
+@theme inline {
+  --font-sans: "Vazirmatn UI", sans-serif;
+
+  --color-rosewater: var(--rosewater);
+  --color-flamingo: var(--flamingo);
+  --color-pink: var(--pink);
+  --color-mauve: var(--mauve);
+  --color-red: var(--red);
+  --color-maroon: var(--maroon);
+  --color-peach: var(--peach);
+  --color-yellow: var(--yellow);
+  --color-green: var(--green);
+  --color-teal: var(--teal);
+  --color-sky: var(--sky);
+  --color-sapphire: var(--sapphire);
+  --color-blue: var(--blue);
+  --color-lavender: var(--lavender);
+  --color-text: var(--text);
+  --color-subtext-1: var(--subtext-1);
+  --color-subtext-0: var(--subtext-0);
+  --color-overlay-2: var(--overlay-2);
+  --color-overlay-1: var(--overlay-1);
+  --color-overlay-0: var(--overlay-0);
+  --color-surface-2: var(--surface-2);
+  --color-surface-1: var(--surface-1);
+  --color-surface-0: var(--surface-0);
+  --color-base: var(--base);
+  --color-mantle: var(--mantle);
+  --color-crust: var(--crust);
+}
