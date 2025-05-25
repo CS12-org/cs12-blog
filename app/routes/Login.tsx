@@ -2,6 +2,7 @@ import { useNavigate } from "react-router";
 import { Link } from "react-router";
 import { twJoin } from "tailwind-merge";
 import SamanCharacter from "~/assets/images/SM.svg?url";
+import Button from "~/components/Button";
 
 function Login() {
   const navigate = useNavigate();
@@ -41,25 +42,23 @@ function Login() {
         <Link
           rel="nofollow"
           to="/forgot-password"
-          className="text-lavender underline rounded-md"
+          className="text-lavender hover:underline rounded-md self-start"
         >
           رمز عبورم رو فراموش کردم!
         </Link>
 
         <div className="mt-4 flex gap-2">
-          <button
-            type="submit"
-            className="bg-lavender text-crust py-2 rounded-md grow"
-          >
+          <Button type="submit" className="py-2 grow">
             ورود به سایت
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
-            onClick={() => navigate("/signup")}
-            className="border border-solid border-lavender py-2 rounded-md px-4"
+            variant="outline"
+            className="py-2 px-4"
+            onPress={() => navigate("/signup")}
           >
             ثبت نام
-          </button>
+          </Button>
         </div>
       </form>
     </main>

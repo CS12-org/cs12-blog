@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router";
 import { twJoin } from "tailwind-merge";
 import FarhanCharacter from "~/assets/images/FR.svg?url";
+import Button from "~/components/Button";
 
 function SignUp() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <main className="min-h-dvh flex flex-col items-center">
@@ -43,19 +44,17 @@ function SignUp() {
         />
 
         <div className="mt-4 flex gap-2">
-          <button
-            type="submit"
-            className="bg-lavender text-crust py-2 rounded-md grow"
-          >
+          <Button type="submit" className="py-2 grow">
             ثبت نام در سایت
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
-            onClick={() => navigate('/login')}
-            className="border border-solid border-lavender py-2 rounded-md px-4"
+            variant="outline"
+            className="py-2 px-4"
+            onPress={() => navigate("/login")}
           >
             ورود
-          </button>
+          </Button>
         </div>
       </form>
     </main>
