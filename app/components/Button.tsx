@@ -4,10 +4,11 @@ import twMerge from "~/lib/tw-merge";
 
 type Props = Omit<ComponentProps<typeof AriaButton>, "className"> & {
   className?: string;
-  variant?: "outline" | "fill";
+  variant?: "outline" | "fill" | "none";
 };
 
 const VARIANTS = {
+  none: "",
   fill: "bg-lavender text-base",
   outline: "border-2 border-solid border-lavender text-lavender",
 } as const;

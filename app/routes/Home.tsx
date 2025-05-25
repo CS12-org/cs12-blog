@@ -1,12 +1,5 @@
-import type { Route } from "./+types/Home";
-
-export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
-  ];
+function Home() {
+  return <></>;
 }
 
-export default function Home() {
-  return <p>متن فارسی</p>;
-}
+export default Home;
