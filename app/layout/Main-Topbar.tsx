@@ -2,9 +2,9 @@ import { twJoin } from "tailwind-merge";
 import { Link } from "react-router";
 import {
   FaMoon,
-  FaArrowRightToBracket,
   FaBook,
   FaMagnifyingGlass,
+  FaArrowRightToBracket,
 } from "react-icons/fa6";
 
 import Button from "~/components/Button";
@@ -33,7 +33,9 @@ function MainTopbar() {
             <Link to="#">درباره ما</Link>
           </li>
           <li className="text-maroon">
-            <Link to="#">کمک!</Link>
+            <Link to="#" rel="help">
+              کمک!
+            </Link>
           </li>
         </ul>
       </nav>

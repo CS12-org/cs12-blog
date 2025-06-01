@@ -1,5 +1,11 @@
+import WeeklyChallenge from "~/components/Home/WeeklyChallenge";
+
 function Home() {
-  return <></>;
+  return (
+    <>
+      <WeeklyChallenge />
+    </>
+  );
 }
 
 export default Home;
