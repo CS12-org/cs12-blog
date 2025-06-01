@@ -33,7 +33,7 @@ function MainArticles() {
               <span>برنامه نویسی</span>
               <FaFileCode
                 size={16}
-                className="box-content p-1.5 rounded bg-base"
+                className="box-content p-1.5 rounded bg-base text-sky"
               />
             </Link>
           </li>
@@ -46,7 +46,7 @@ function MainArticles() {
               <span>معماری کامپیوتر</span>
               <FaMicrochip
                 size={16}
-                className="box-content p-1.5 rounded bg-base"
+                className="box-content p-1.5 rounded bg-base text-sky"
               />
             </Link>
           </li>
