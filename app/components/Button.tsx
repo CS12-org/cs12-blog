@@ -21,7 +21,7 @@ function Button(props: Props) {
     "rounded-md transition",
     "hover:brightness-110 pressed:brightness-90",
     variantStyle,
-    className
+    className,
   );
 
   return <AriaButton className={styles} {...other} />;

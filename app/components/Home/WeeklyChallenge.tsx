@@ -12,16 +12,16 @@ const TAGS = ["چالش", "گیت", "چالش_هفتگی"];
 function WeeklyChallenge() {
   return (
     <article className="rounded-xl bg-crust py-5">
-      <div className="px-5 flex items-center gap-1 [&>*]:shrink-0 mb-2.5">
+      <header className="px-5 flex items-center gap-1 [&>*]:shrink-0 mb-2.5">
         <h3 className="text-body-sm text-subtext-0">چالش هفتگی</h3>
         <FaPersonRunning size={20} className="text-yellow" />
         <FaRegClock size={18} className="mr-auto text-lavender" />
-      </div>
+      </header>
 
-      <div className="px-10">
+      <main className="px-10">
         <Link to="#" className="w-full">
           <img
-            alt="something"
+            alt="weekly challenge"
             src={Cs12ChallengeImg}
             className="w-full rounded-2xl mb-4.5"
           />
@@ -39,12 +39,13 @@ function WeeklyChallenge() {
         <div
           className={twJoin(
             "bg-base rounded-xl px-4 py-3",
-            "flex items-start gap-2.5"
+            "flex items-start gap-2.5 border",
+            "border-solid border-surface-0"
           )}
         >
           <img
-            alt="logo"
             src={Cs12ChallengeLogo}
+            alt="weekly challenge logo"
             className="size-11.5 rounded-md"
           />
 
@@ -70,7 +71,11 @@ function WeeklyChallenge() {
             </ul>
           </div>
         </div>
-      </div>
+      </main>
+
+      <footer className="px-10 mt-4">
+        <p className="text-title-sm">خوب کد بزنی!</p>
+      </footer>
     </article>
   );
 }
