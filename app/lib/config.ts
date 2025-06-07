@@ -1,11 +1,11 @@
 import { z } from "zod";
 
 const configSchema = z.object({
-  VITE_SECRET: z.string().min(1),
+  SECRET: z.string().min(1),
 });
 
 const config = configSchema.parse({
-  VITE_SECRET: import.meta.env.VITE_SECRET,
+  SECRET: process.env.SECRET,
 });
 
 export default config;

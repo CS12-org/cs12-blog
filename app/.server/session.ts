@@ -11,8 +11,8 @@ const session = createCookieSessionStorage<SessionState>({
     httpOnly: true,
     name: "session",
     sameSite: "strict",
+    secrets: [config.SECRET],
     maxAge: 30 * 60 * 60 * 24,
-    secrets: [config.VITE_SECRET],
   },
 });
 
