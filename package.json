@@ -21,7 +21,8 @@
     "tailwind-merge": "^3.3.0",
     "tailwindcss-animated": "^2.0.0",
     "tailwindcss-react-aria-components": "^2.0.0",
-    "vazirmatn": "^33.0.3"
+    "vazirmatn": "^33.0.3",
+    "zod": "^3.25.56"
   },
   "devDependencies": {
     "@react-router/dev": "^7.6.0",

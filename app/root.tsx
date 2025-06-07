@@ -5,16 +5,41 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useRouteLoaderData,
 } from "react-router";
 
-import "vazirmatn/misc/UI/Vazirmatn-UI-font-face.css";
-import "~/assets/styles/main.css";
+import session from "./.server/session";
+import TailwindCss from "~/assets/styles/main.css?url";
 
 import type { Route } from "./+types/root";
 
+export async function loader(args: Route.LoaderArgs) {
+  const { request } = args;
+  const cookies = request.headers.get("Cookie");
+  const currentSession = await session.getSession(cookies);
+  const theme = currentSession.data.theme;
+
+  return { theme: theme ?? "dark" };
+}
+
+export const links: Route.LinksFunction = () => [
+  {
+    as: "style",
+    rel: "stylesheet",
+    href: "https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@33.003/misc/UI/Vazirmatn-UI-font-face.css",
+  },
+  {
+    as: "style",
+    rel: "stylesheet",
+    href: TailwindCss,
+  },
+];
+
 export function Layout({ children }: { children: React.ReactNode }) {
+  const loaderData = useRouteLoaderData<typeof loader>("root");
+
   return (
-    <html className="dark" lang="fa" dir='rtl'>
+    <html className={loaderData?.theme ?? "dark"} lang="fa" dir="rtl">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

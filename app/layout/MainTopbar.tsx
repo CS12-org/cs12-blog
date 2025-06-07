@@ -11,6 +11,7 @@ import {
 import Button from "~/components/Button";
 import Logo from "~/assets/images/cs12-logo.svg?react";
 import twMerge from "~/lib/tw-merge";
+import MainThemeSwitch from "./MainThemeSwitch";
 
 type Props = {
   mobileSidebarOpen: boolean;
@@ -67,9 +68,7 @@ function MainTopbar(props: Props) {
       <Button variant="none" className="p-3 rounded-lg">
         <FaArrowRightToBracket size={16} />
       </Button>
-      <Button variant="none" className="p-3 rounded-full">
-        <FaSun size={16} />
-      </Button>
+      <MainThemeSwitch />
     </header>
   );
 }

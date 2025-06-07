@@ -18,7 +18,7 @@ function WeeklyChallenge() {
         <FaRegClock size={18} className="mr-auto text-lavender" />
       </header>
 
-      <main className="px-10">
+      <main className="px-6 lg:px-10">
         <Link to="#" className="w-full">
           <img
             alt="weekly challenge"
@@ -28,21 +28,22 @@ function WeeklyChallenge() {
         </Link>
 
         <div className="flex items-center justify-between mb-4.5">
-          <h4 className="text-title-xs">
-            <span className="text-red">توجه :</span>
+          <h4 className="text-label-sm lg:text-title-xs">
+            <span className="text-red hidden lg:inline">توجه :</span>
             <span> چالش هفتگی شروع شد</span>
           </h4>
 
-          <p className="text-sky text-title-xs">۷ روز مانده به اتمام چالش</p>
+          <p className="text-sky text-label-sm lg:text-title-xs">
+            ۷ روز مانده به اتمام چالش
+          </p>
         </div>
 
         <div
           className={twJoin(
             "bg-base rounded-xl px-4 py-3",
             "flex items-start gap-2.5 border",
-            "border-solid border-surface-0"
-          )}
-        >
+            "border-solid border-surface-0",
+          )}>
           <img
             src={Cs12ChallengeLogo}
             alt="weekly challenge logo"

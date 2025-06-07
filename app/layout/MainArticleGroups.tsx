@@ -48,7 +48,6 @@ function MainArticleGroups(props: Props) {
 
   const asideContents = (
     <>
-      {" "}
       <header className="flex items-center min-h-6.75">
         <AnimatePresence initial={false}>
           {!collapsed && (
@@ -124,7 +123,7 @@ function MainArticleGroups(props: Props) {
 
   return (
     <>
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {mobileSidebarOpen && (
           <motion.div
             aria-hidden
@@ -156,7 +155,7 @@ function MainArticleGroups(props: Props) {
             className={twMerge(
               "fixed top-30.5 right-[calc((100%-384px)/2)]",
               "p-3 bg-crust w-full rounded-xl max-w-sm z-10",
-              "lg:hidden"
+              "lg:hidden",
             )}>
             {asideContents}
           </motion.aside>
