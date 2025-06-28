@@ -31,7 +31,7 @@ const groups = [
   },
 ];
 
-function MainArticleGroups(props: Props) {
+function ArticleCategories(props: Props) {
   const { onMobileSidebarChange, mobileSidebarOpen } = props;
 
   const headingId = useId();
@@ -140,6 +140,7 @@ function MainArticleGroups(props: Props) {
         className={twMerge(
           "p-3 bg-crust w-full rounded-xl",
           "transition-[width] hidden lg:block max-w-sm max-w-65",
+          "sticky top-5",
           collapsed && "w-17",
         )}>
         {asideContents}
@@ -165,4 +166,4 @@ function MainArticleGroups(props: Props) {
   );
 }
 
-export default MainArticleGroups;
+export default ArticleCategories;

@@ -51,9 +51,11 @@ function WeeklyChallenge() {
           />
 
           <div>
-            <h2 className="text-title-sm mb-1">
-              با ما در هفته اول چالش برنامه نویسی با گیت رو شروع کنید.
-            </h2>
+            <Link to="#" className="block">
+              <h2 className="text-title-sm mb-1">
+                با ما در هفته اول چالش برنامه نویسی با گیت رو شروع کنید.
+              </h2>
+            </Link>
 
             <p className="text-subtext-1 text-body-sm mb-2">
               سه تا مقاله رو میخونی یه ریپو میاری بالا و از بست پرکتیس های توی
