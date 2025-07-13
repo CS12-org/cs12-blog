@@ -9,7 +9,7 @@ import MyRadioGroup from "~/components/UserPanel/ThemeSetting";
 import { Radio } from "react-aria-components";
 import { MyTextField } from "~/components/UserPanel/TextFeild";
 import Button from "~/components/Button";
-
+import Cs12Logo from "~/components/Global/Icons/cs12-logo";
 
 function UserPanel() {
   return (
@@ -24,7 +24,7 @@ function UserPanel() {
         </div>
         <div className="bg-crust p-2 rounded-xl flex flex-col w-full  ">
           <div className="grid grid-cols-6 grid-rows-1 content-center items-center ">
-            <div className="bg-blue-200 w-18 h-18 row-start-1 "></div>
+            <Cs12Logo />
             <img
               src={Profile}
               className="w-18 h-18 row-start-1 mr-[20px] justify-self-start rounded-tr-[40px] rounded-bl-[40px] rounded-tl-3xl rounded-br-3xl"
@@ -142,36 +142,36 @@ function UserPanel() {
             شما یک کاربر عادی هستید برای تبدیل شدن به منتور درخواست بدید.{" "}
           </div>
         </div>
-    <h1 className="font-extrabold text-xl" > تنظیمات اولیه</h1>
- <form className="flex flex-col gap-2.5">
+        <h1 className="font-extrabold text-xl"> تنظیمات اولیه</h1>
+        <form className="flex flex-col gap-2.5">
+          <div className="grid grid-cols-4 gap-2.5 bg-crust p-2 rounded-xl">
+            <div className="col-start-1 col-end-3">
+              <MyTextField name="نام کاربری" placeholder="نام کاربری" />
+            </div>
+            <div className="col-start-3 col-end-5">
+              <MyTextField name="رمز عبور" placeholder="رمز عبور" />
+            </div>
+            <div className="col-span-4">
+              <MyTextField name="ایمیل" placeholder="ایمیل" />
+            </div>
+            <div className="col-span-4">
+              <Button className="bg-crust border border-red border-2 w-full p-2 h-9 text-red text-xs">
+                تغییر رمز عبور
+              </Button>
+            </div>
+          </div>
 
-  <div className="grid grid-cols-4 gap-2.5 bg-crust p-2 rounded-xl">
-
-  <div className="col-start-1 col-end-3">
-    <MyTextField name="نام کاربری" placeholder="نام کاربری" />
-  </div>
-  <div className="col-start-3 col-end-5">
-    <MyTextField name="رمز عبور" placeholder="رمز عبور" />
-  </div>
-  <div className="col-span-4">
-    <MyTextField name="ایمیل" placeholder="ایمیل" />
-  </div>
-  <div className="col-span-4">
-    <Button className="bg-crust border border-red border-2 w-full p-2 h-9 text-red text-xs">تغییر رمز عبور</Button>
-  </div>
-
-  </div>
-
-  <div className="grid grid-cols-9 gap-2.5 text-xs font-bold text-crust">
-  <div className="col-span-6">
-    <Button className="bg-sapphire w-full p-2 h-9  ">ثبت</Button>
-  </div>
-  <div className="col-span-3">
-    <Button className="bg-maroon w-full p-2 h-9  ">بازگشت به تنظیمات پیشفرض</Button>
-  </div>
-  </div>
-</form>
-
+          <div className="grid grid-cols-9 gap-2.5 text-xs font-bold text-crust">
+            <div className="col-span-6">
+              <Button className="bg-sapphire w-full p-2 h-9  ">ثبت</Button>
+            </div>
+            <div className="col-span-3">
+              <Button className="bg-maroon w-full p-2 h-9  ">
+                بازگشت به تنظیمات پیشفرض
+              </Button>
+            </div>
+          </div>
+        </form>
       </main>
     </div>
   );
