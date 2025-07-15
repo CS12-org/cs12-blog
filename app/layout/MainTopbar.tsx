@@ -1,15 +1,13 @@
-import { Link } from "react-router";
-import { twJoin } from "tailwind-merge";
 import type { Dispatch, SetStateAction } from "react";
 import {
+  FaArrowRightToBracket,
   FaBook,
   FaMagnifyingGlass,
-  FaArrowRightToBracket,
-  FaSun,
 } from "react-icons/fa6";
-
-import Button from "~/components/Button";
+import { Link } from "react-router";
+import { twJoin } from "tailwind-merge";
 import Logo from "~/assets/images/cs12-logo.svg?react";
+import Button from "~/components/Button";
 import twMerge from "~/lib/tw-merge";
 import MainThemeSwitch from "./MainThemeSwitch";
 
@@ -29,7 +27,8 @@ function MainTopbar(props: Props) {
         "gap-3.5 [&>*]:shrink-0 lg:px-7.5",
         "[&>button]:text-overlay-1 relative",
         "z-11",
-      )}>
+      )}
+    >
       <Logo />
 
       <nav className="hidden text-body-sm mr-3.5 lg:block">
@@ -51,15 +50,16 @@ function MainTopbar(props: Props) {
         </ul>
       </nav>
 
-      <div role="separator" className="grow" />
+      <div aria-hidden className="grow" />
 
       <Button
         variant="none"
-        onPress={() => onMobileSidebarChange(prev => !prev)}
+        onPress={() => onMobileSidebarChange((prev) => !prev)}
         className={twMerge(
           "p-3 rounded-lg lg:hidden",
           mobileSidebarOpen && "!bg-sapphire !text-crust",
-        )}>
+        )}
+      >
         <FaBook size={16} />
       </Button>
       <Button variant="none" className="p-3 rounded-lg">

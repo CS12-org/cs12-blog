@@ -16,10 +16,7 @@ function Home() {
       <div className="grow overflow-hidden">
         <WeeklyChallenge />
 
-        <div
-          role="separator"
-          className="h-[3px] bg-surface-0 my-5 rounded-full"
-        />
+        <div aria-hidden className="h-[3px] bg-surface-0 my-5 rounded-full" />
 
         <ul className="flex flex-col items-stretch gap-5">
           <li>

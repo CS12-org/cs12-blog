@@ -11,15 +11,14 @@ function Post() {
       </header>
       <main>
         <Link to="#">
-        <h3 className="text-headline-md lg:text-headline-lg px-5 pt-4 pb-2.5 truncate">
-          یادگیری بَش اسکریپت قسمت اول
-        </h3>
+          <h3 className="text-headline-md lg:text-headline-lg px-5 pt-4 pb-2.5 truncate">
+            یادگیری بَش اسکریپت قسمت اول
+          </h3>
         </Link>
-
 
         <div className="bg-mantle py-2.5 flex items-stretch">
           <span
-            role="separator"
+            aria-hidden
             className="block w-[5px] shrink-0 bg-teal rounded-full"
           />
           <p className="truncate text-subtext-0 grow px-2.5">

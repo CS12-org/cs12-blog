@@ -2,7 +2,8 @@ body {
   @apply selection:bg-transparent selection:decoration-wavy selection:underline bg-base text-text;
 }
 
-button, a {
+button,
+a {
   cursor: pointer;
 }
 

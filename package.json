@@ -6,7 +6,8 @@
     "build": "react-router build",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc"
+    "typecheck": "react-router typegen && tsc",
+    "prepare": "husky"
   },
   "dependencies": {
     "@react-router/node": "^7.6.0",
@@ -27,11 +28,14 @@
     "zod": "^3.25.56"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.1.1",
     "@react-router/dev": "^7.6.0",
     "@tailwindcss/vite": "^4.1.7",
     "@types/node": "^22",
     "@types/react": "^19.1.4",
     "@types/react-dom": "^19.1.5",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
     "tailwindcss": "^4.1.7",
     "typescript": "^5.8.3",
     "vite": "^6.3.5",

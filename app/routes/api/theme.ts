@@ -19,7 +19,7 @@ export async function action(args: Route.ActionArgs) {
     const setCookie = await session.commitSession(currentSession);
 
     return data(null, { headers: { "Set-Cookie": setCookie }, status: 200 });
-  } catch (err) {
+  } catch (_err) {
     return data(null, { status: 422 });
   }
 }

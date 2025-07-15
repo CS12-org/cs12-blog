@@ -7,9 +7,8 @@ import {
   ScrollRestoration,
   useRouteLoaderData,
 } from "react-router";
-
-import session from "./.server/session";
 import TailwindCss from "~/assets/styles/main.css?url";
+import session from "./.server/session";
 
 import type { Route } from "./+types/root";
 

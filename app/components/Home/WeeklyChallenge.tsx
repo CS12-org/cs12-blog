@@ -43,7 +43,8 @@ function WeeklyChallenge() {
             "bg-base rounded-xl px-4 py-3",
             "flex items-start gap-2.5 border",
             "border-solid border-surface-0",
-          )}>
+          )}
+        >
           <img
             src={Cs12ChallengeLogo}
             alt="weekly challenge logo"

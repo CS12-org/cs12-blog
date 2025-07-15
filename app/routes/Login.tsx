@@ -1,5 +1,4 @@
-import { useNavigate } from "react-router";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { twJoin } from "tailwind-merge";
 import SamanCharacter from "~/assets/images/SM.svg?url";
 import Button from "~/components/Button";
@@ -15,13 +14,13 @@ function Login() {
           alt="animated character"
           className={twJoin(
             "animate-fade-up animate-duration-1000 animate-delay-500",
-            "absolute bottom-full left-1/2 -translate-x-1/2 w-25 -z-1"
+            "absolute bottom-full left-1/2 -translate-x-1/2 w-25 -z-1",
           )}
         />
         <h1
           className={twJoin(
             "font-bold text-4xl mb-7 text-center",
-            "flex gap-2 justify-center"
+            "flex gap-2 justify-center",
           )}
         >
           <span className="text-rosewater animate-fade">و</span>
