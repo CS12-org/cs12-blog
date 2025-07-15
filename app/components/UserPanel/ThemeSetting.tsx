@@ -24,14 +24,14 @@ function MyRadioGroup({ options, ...props }: ColorRadioGroupProps) {
             value={opt.value}
          className={`
   group flex items-center bg-mantle rounded-md border-2 border-transparent transition-all duration-200 cursor-pointer
-  ${opt.value === 'lavender' ? 'data-[selected]:border-lavender' : ''}
-  ${opt.value === 'maroon' ? 'data-[selected]:border-maroon' : ''}
-  ${opt.value === 'teal' ? 'data-[selected]:border-teal' : ''}
-  ${opt.value === 'peach' ? 'data-[selected]:border-peach' : ''}
-  ${opt.value === 'sky' ? 'data-[selected]:border-sky' : ''}
-  ${opt.value === 'mauve' ? 'data-[selected]:border-mauve' : ''}
-  ${opt.value === 'pink' ? 'data-[selected]:border-pink' : ''}
-  ${opt.value === 'flamingo' ? 'data-[selected]:border-flamingo' : ''}
+  ${opt.value === 'lavender' ? 'selected:border-lavender' : ''}
+  ${opt.value === 'maroon' ? 'selected:border-maroon' : ''}
+  ${opt.value === 'teal' ? 'selected:border-teal' : ''}
+  ${opt.value === 'peach' ? 'selected:border-peach' : ''}
+  ${opt.value === 'sky' ? 'selected:border-sky' : ''}
+  ${opt.value === 'mauve' ? 'selected:border-mauve' : ''}
+  ${opt.value === 'pink' ? 'selected:border-pink' : ''}
+  ${opt.value === 'flamingo' ? 'selected:border-flamingo' : ''}
 `}
 
           >
