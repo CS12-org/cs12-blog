@@ -109,7 +109,7 @@ function Features() {
           داستان این صفحه چیه؟
         </h2>
         <p className="text-overlay-2">
-          توضیح این صفحه
+          این صفحه ساخته شده که شما بتونید از استیج پروژه وب اپ و حتی فیچر ها و برنامه های آینده ما خبر دار بشید و ببینید چه فیچر هایی زده شده و چه فیچر هایی قراره زده بشه و خلاصه چه اتفاقی داره میوفته .
         </p>
       </section>
       <section className="text-white w-full h-auto bg-crust rounded-xl px-7.5 py-4 flex flex-col content-center gap-y-2.5">
