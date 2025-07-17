@@ -17,39 +17,89 @@ const FeatureStatusIcon = {
 
 const pageFeatures = [
   {
-    title: "مثلا یه تکست",
+    title: "خانه",
     status: FeatureStatus.COMPLETED
   },
   {
-    title: "مثلا یه چیز دیگه",
+    title: "درباره ما : لندینگ پیج CS12",
     status: FeatureStatus.NOT_YET,
   },
   {
-    title: "یه چیزی که داره پیاده سازی می‌شه",
+    title: "یوزر پروفایل",
+    status: FeatureStatus.PENDING
+  },
+  {
+    title: "یوزر پنل",
+    status: FeatureStatus.PENDING
+  }, 
+  {
+    title: "پست پیج",
+    status: FeatureStatus.PENDING
+  },
+  {
+    title: "ارور پیج",
+    status: FeatureStatus.PENDING
+  },
+  {
+    title: "سکشن چالش های هفتگی : در ورژن بعدی",
+    status: FeatureStatus.PENDING
+  },
+  {
+    title: "تِرَک پیج",
+    status: FeatureStatus.PENDING
+  },
+  {
+    title: "کتگوری پیج",
     status: FeatureStatus.PENDING
   }
 ];
 
 const coreFeatures = [
   {
-    title: "مثلا یه تکست",
+    title: "هایلایت و یادداشت پرایوت",
     status: FeatureStatus.COMPLETED,
-    desc: "یک توضیح مثالی"
+    desc: "در هر پست شما میتونید روی هر سکشنی که دوست دارید متن رو هایلایت کنید و سپس یک یادداشت شخصی برای خودتون بگذارید"
   },
   {
-    title: "مثلا یه چیز دیگه",
+    title: "امکان به اشتراک گذاری هایلایت ها و یادداشت",
     status: FeatureStatus.NOT_YET,
+    desc: "هر بار که احساس کردید هایلایت هاتون خفنه میتونید با یه کامیت اون یادداشت و هایلایت رو به اشتراک بگذارید تا همه بتونن ازش استفاده کنن و حتی نقد و بررسیش کنن بهش لایک و دیسلایک بدن و خلاصه آره باعث میشه که صفحه غنی تر از صرفا محتوایی بشه که نویسنده نوشته"
   },
   {
-    title: "یه چیزی که داره پیاده سازی می‌شه",
-    status: FeatureStatus.PENDING
-  }
+    title: "نقد و بررسی",
+    status: FeatureStatus.PENDING,
+    desc: "تصمیم گرفتیم برای بهتر کردن فضای فنی کامیونیتی یک سکشن به اسم نقد و بررسی در نظر بگیریم که افراد بتونند درحقیقت زیر هر پست یه پست بنویسن که پست رو نقد و بررسی کنه عکس داشته باشه پاورقی داشته باشه و حتی بشه روش کامنت گذاشت و بحث کرد و حتی بشه ریتش کرد."
+  },
+  {
+    title: "روتین سازی + تِرَک کردن آموزش",
+    status: FeatureStatus.PENDING,
+    desc: "وقتی قراره یه چیزی رو یاد بگیریم بهتره که سشن های یادگیری اینجوری باشند که بشه به شکل یه روتین قابل انجام بهشون نگاه کرد و در نهایت بتونیم وضعیت چیزایی که یادگرفتیم رو بدونیم و از همه مهم تر مدام پروژه بزنیم."
+  },
+  {
+    title: "امکان سلکت و دی سلکت کردن کورس های آموزشی ",
+    status: FeatureStatus.PENDING,
+    desc: "شما میتونید مثلا بخش programming رو بردارید و مثلا فقط زبان c از توش یاد بگیرید و کاری به باقیه کورس ها نداشته باشید اینجوری هم ترک کردن شما راحت تره و هم این که بهتر میتونی روی یه مطلب تمرکز کنی"
+  },
 ]
 
-export const meta: Route.MetaFunction = () => [
-  { title: "یک تایتل" },
-  { name: "description", content: "some desc" }
-]
+export const meta: Route.MetaFunction = () => {
+  return [
+    { title: "CS12 – Feature Track Page" },
+    {
+      name: "description",
+      content: "Track the development stages and new features of the CS12 web application, designed to empower developers and learners through deep foundational tools."
+    },
+    {
+      name: "viewport",
+      content: "width=device-width, initial-scale=1"
+    },
+    {
+      name: "robots",
+      content: "index, follow"
+    }
+  ];
+};
+
 
 function Features() {
   return (
@@ -87,12 +137,12 @@ function Features() {
 
       <ul className="w-full h-auto flex flex-col bg-crust py-4 rounded-xl font-bold">
         {coreFeatures.map(item => (
-          <li key={item.title} className="flex justify-between bg-mantle h-auto px-7.5 py-2 content-center items-center border-b-[1px] border-base">
-            <div>
+          <li key={item.title} className="bg-mantle h-auto px-7.5 py-2 border-b-[1px] border-base">
+            <div className="flex justify-between content-center items-center">
               <p>{item.title}</p>
-              {item.desc && <p className="text-overlay-2 font-normal">{item.desc}</p>}
+              {FeatureStatusIcon[item.status]}
             </div>
-            {FeatureStatusIcon[item.status]}
+            {item.desc && <p className="text-overlay-2 font-normal pt-3 pl-5">{item.desc}</p>}
           </li>
         ))}
       </ul>
