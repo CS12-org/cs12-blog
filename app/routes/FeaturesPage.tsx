@@ -73,7 +73,7 @@ function Features() {
       <ul className="w-full h-auto flex flex-col bg-crust py-4 rounded-xl">
         {pageFeatures.map(item =>
         (<li key={item.title} className="flex justify-between bg-mantle h-auto px-7.5 py-2 content-center items-center border-b-[1px] border-base">
-          <span>{item.title}</span>
+          <p>{item.title}</p>
           {FeatureStatusIcon[item.status]}
         </li>))}
       </ul>
@@ -89,7 +89,7 @@ function Features() {
         {coreFeatures.map(item => (
           <li key={item.title} className="flex justify-between bg-mantle h-auto px-7.5 py-2 content-center items-center border-b-[1px] border-base">
             <div>
-              <span>{item.title}</span>
+              <p>{item.title}</p>
               {item.desc && <p className="text-overlay-2 font-normal">{item.desc}</p>}
             </div>
             {FeatureStatusIcon[item.status]}
