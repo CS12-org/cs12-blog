@@ -90,10 +90,6 @@ export const meta: Route.MetaFunction = () => {
       content: "Track the development stages and new features of the CS12 web application, designed to empower developers and learners through deep foundational tools."
     },
     {
-      name: "viewport",
-      content: "width=device-width, initial-scale=1"
-    },
-    {
       name: "robots",
       content: "index, follow"
     }
