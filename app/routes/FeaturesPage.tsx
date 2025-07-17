@@ -5,10 +5,6 @@ import Check from "../assets/images/check.svg?react";
 function Features() {
   return (
     <main className="flex flex-col gap-y-3.5 text-xs lg:text-[16px] text-white">
-      {/* it's hidden for the user, to serve the purpose of having a h1 tag in every page! */}
-      <h1 className="hidden">
-        Track CS12 Webapp Features
-      </h1>
       <section className="text-white w-full h-auto bg-crust rounded-xl px-7.5 py-4 flex flex-col content-center gap-y-2.5">
         <h2 className="font-extrabold text-xl lg:text-3xl">
           داستان این صفحه چیه؟
@@ -39,7 +35,7 @@ function Features() {
           <FaRegClock className="h-5.5 w-5.5 text-yellow" />
         </li>
         <li className="flex justify-between bg-mantle h-auto px-7.5 py-2 content-center items-center border-b-[1px] border-base">
-          <span>یوزر پنل</span> 
+          <span>یوزر پنل</span>
           <Check className="ml-[-1px]" />
         </li>
         <li className="flex justify-between bg-mantle h-auto px-7.5 py-2 content-center items-center border-b-[1px] border-base">
@@ -47,15 +43,15 @@ function Features() {
           <FaRegClock className="h-5.5 w-5.5 text-yellow" />
         </li>
         <li className="flex justify-between bg-mantle h-auto px-7.5 py-2 content-center items-center border-b-[1px] border-base">
-          <span>ارور پیج</span> 
+          <span>ارور پیج</span>
           <Check className="ml-[-1px]" />
         </li>
         <li className="flex justify-between bg-mantle h-auto px-7.5 py-2 content-center items-center border-b-[1px] border-base">
-          <span>صفحه چالش هفتگی</span> 
+          <span>صفحه چالش هفتگی</span>
           <Dottcircle className="ml-[-3px]" />
         </li>
         <li className="flex justify-between bg-mantle h-auto px-7.5 py-2 content-center items-center border-b-[1px] border-base">
-          <span>صفحه کتگوری ها</span> 
+          <span>صفحه کتگوری ها</span>
           <Dottcircle className="ml-[-3px]" />
         </li>
       </ul>
@@ -81,7 +77,7 @@ function Features() {
         </li>
 
         <li className="flex justify-between bg-mantle h-auto px-7.5 py-2 content-center items-center border-b-[1px] border-base">
-          <span>یوزر پنل</span> 
+          <span>یوزر پنل</span>
           <Check className="ml-[-1px]" />
         </li>
         <li className="flex justify-between bg-mantle h-auto px-7.5 py-2 content-center items-center border-b-[1px] border-base">
@@ -89,15 +85,15 @@ function Features() {
           <FaRegClock className="h-5.5 w-5.5 text-yellow" />
         </li>
         <li className="flex justify-between bg-mantle h-auto px-7.5 py-2 content-center items-center border-b-[1px] border-base">
-          <span>ارور پیج</span> 
+          <span>ارور پیج</span>
           <Check className="ml-[-1px]" />
         </li>
         <li className="flex justify-between bg-mantle h-auto px-7.5 py-2 content-center items-center border-b-[1px] border-base">
-          <span>صفحه چالش هفتگی</span> 
+          <span>صفحه چالش هفتگی</span>
           <Dottcircle className="ml-[-3px]" />
         </li>
         <li className="flex justify-between bg-mantle h-auto px-7.5 py-2 content-center items-center border-b-[1px] border-base">
-          <span>صفحه کتگوری ها</span> 
+          <span>صفحه کتگوری ها</span>
           <Dottcircle className="ml-[-3px]" />
         </li>
       </ul>
