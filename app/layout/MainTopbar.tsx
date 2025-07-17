@@ -26,7 +26,7 @@ function MainTopbar(props: Props) {
         "flex items-center px-4 [&>button]:bg-base",
         "gap-3.5 [&>*]:shrink-0 lg:px-7.5",
         "[&>button]:text-overlay-1 relative",
-        "z-11 select-none"
+        "z-11 select-none pointer-events-none"
       )}
     style={{
   WebkitUserSelect: "none",
