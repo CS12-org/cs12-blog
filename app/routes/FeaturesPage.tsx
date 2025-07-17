@@ -18,7 +18,7 @@ const FeatureStatusIcon = {
 const pageFeatures = [
   {
     title: "خانه",
-    status: FeatureStatus.COMPLETED
+    status: FeatureStatus.PENDING
   },
   {
     title: "درباره ما : لندینگ پیج CS12",
@@ -42,7 +42,7 @@ const pageFeatures = [
   },
   {
     title: "سکشن چالش های هفتگی : در ورژن بعدی",
-    status: FeatureStatus.PENDING
+    status: FeatureStatus.NOT_YET
   },
   {
     title: "تِرَک پیج",
@@ -57,12 +57,12 @@ const pageFeatures = [
 const coreFeatures = [
   {
     title: "هایلایت و یادداشت پرایوت",
-    status: FeatureStatus.COMPLETED,
+    status: FeatureStatus.PENDING,
     desc: "در هر پست شما میتونید روی هر سکشنی که دوست دارید متن رو هایلایت کنید و سپس یک یادداشت شخصی برای خودتون بگذارید"
   },
   {
     title: "امکان به اشتراک گذاری هایلایت ها و یادداشت",
-    status: FeatureStatus.NOT_YET,
+    status: FeatureStatus.PENDING,
     desc: "هر بار که احساس کردید هایلایت هاتون خفنه میتونید با یه کامیت اون یادداشت و هایلایت رو به اشتراک بگذارید تا همه بتونن ازش استفاده کنن و حتی نقد و بررسیش کنن بهش لایک و دیسلایک بدن و خلاصه آره باعث میشه که صفحه غنی تر از صرفا محتوایی بشه که نویسنده نوشته"
   },
   {
