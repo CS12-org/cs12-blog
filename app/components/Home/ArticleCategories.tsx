@@ -1,16 +1,15 @@
-import { Link } from "react-router";
 import { AnimatePresence, motion } from "motion/react";
 import {
+  type Dispatch,
+  type SetStateAction,
   useEffect,
   useId,
   useState,
-  type Dispatch,
-  type SetStateAction,
 } from "react";
 import { FaAnglesRight, FaFileCode, FaMicrochip, FaX } from "react-icons/fa6";
-
-import Button from "~/components/Button";
+import { Link } from "react-router";
 import { twJoin } from "tailwind-merge";
+import Button from "~/components/Button";
 import twMerge from "~/lib/tw-merge";
 
 type Props = {
@@ -56,7 +55,8 @@ function ArticleCategories(props: Props) {
               exit={{ opacity: 0, width: 0 }}
               className="text-title-md truncate"
               initial={{ opacity: 0, width: 0 }}
-              animate={{ opacity: 1, width: "100%" }}>
+              animate={{ opacity: 1, width: "100%" }}
+            >
               مطالب سایت
             </motion.h2>
           )}
@@ -64,12 +64,13 @@ function ArticleCategories(props: Props) {
 
         <Button
           variant="none"
-          onPress={() => setCollapsed(prev => !prev)}
+          onPress={() => setCollapsed((prev) => !prev)}
           className={twMerge(
             "bg-base p-1.5 rounded-lg mr-auto shrink-0",
             collapsed && "p-[17px] bg-mantle transition-all",
             "hidden lg:block",
-          )}>
+          )}
+        >
           <FaAnglesRight
             size={10}
             className={twJoin(collapsed ? "rotate-180" : "", "transition")}
@@ -82,14 +83,15 @@ function ArticleCategories(props: Props) {
           className={twMerge(
             "bg-base p-1.5 rounded-lg mr-auto shrink-0",
             "block lg:hidden",
-          )}>
+          )}
+        >
           <FaX size={10} className="text-red" />
         </Button>
       </header>
-      <div role="separator" className="-mx-3 h-px bg-surface-0 my-3" />
+      <div aria-hidden className="-mx-3 h-px bg-surface-0 my-3" />
       <nav className="text-body-sm">
         <ul className="flex flex-col items-stretch gap-1.5">
-          {groups.map(group => (
+          {groups.map((group) => (
             <li key={group.slug}>
               <Link
                 to={group.slug}
@@ -97,14 +99,16 @@ function ArticleCategories(props: Props) {
                   "flex items-center justify-between bg-mantle p-2",
                   "hover:brightness-110 active:brightness-95 transition",
                   "rounded-md",
-                )}>
+                )}
+              >
                 <AnimatePresence initial={false}>
                   {!collapsed && (
                     <motion.span
                       className="truncate"
                       exit={{ opacity: 0, width: 0 }}
                       initial={{ opacity: 0, width: 0 }}
-                      animate={{ opacity: 1, width: "100%" }}>
+                      animate={{ opacity: 1, width: "100%" }}
+                    >
                       {group.title}
                     </motion.span>
                   )}
@@ -139,10 +143,11 @@ function ArticleCategories(props: Props) {
         aria-labelledby={headingId}
         className={twMerge(
           "p-3 bg-crust w-full rounded-xl",
-          "transition-[width] hidden lg:block max-w-sm max-w-65",
+          "transition-[width] hidden lg:block max-w-65",
           "sticky top-5",
           collapsed && "w-17",
-        )}>
+        )}
+      >
         {asideContents}
       </aside>
 
@@ -157,7 +162,8 @@ function ArticleCategories(props: Props) {
               "fixed top-30.5 right-[calc((100%-384px)/2)]",
               "p-3 bg-crust w-full rounded-xl max-w-sm z-10",
               "lg:hidden",
-            )}>
+            )}
+          >
             {asideContents}
           </motion.aside>
         )}

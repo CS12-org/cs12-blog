@@ -1,5 +1,5 @@
-import config from "~/lib/config";
 import { createCookieSessionStorage } from "react-router";
+import config from "~/lib/config";
 
 export type SessionState = {
   theme: "dark" | "light";

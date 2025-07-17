@@ -1,8 +1,6 @@
 import { twJoin } from "tailwind-merge";
-import { FaSun } from "react-icons/fa6";
 
 import Logo from "~/assets/images/cs12-logo.svg?react";
-import Button from "~/components/Button";
 import MainThemeSwitch from "./MainThemeSwitch";
 
 const COPYRIGHT_TEXT = "کلیه حقوق مادی و معنوی سایت برای CS12 محفوظ است.";
@@ -15,7 +13,8 @@ function MainFooter() {
           "min-h-17.5 flex",
           "justify-between items-center",
           "px-4 lg:px-7.5 w-full",
-        )}>
+        )}
+      >
         <Logo />
 
         <p className="text-body-sm hidden lg:block">{COPYRIGHT_TEXT}</p>

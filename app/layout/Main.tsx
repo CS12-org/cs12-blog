@@ -1,8 +1,8 @@
+import { useState } from "react";
 import { Outlet } from "react-router";
+import MainBottombar from "./MainBottombar";
 import MainFooter from "./MainFooter";
 import MainTopbar from "./MainTopbar";
-import MainBottombar from "./MainBottombar";
-import { useState } from "react";
 
 function Main() {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);

@@ -1,8 +1,7 @@
 import { FaMoon, FaSun } from "react-icons/fa6";
 import { useRouteLoaderData, useSubmit } from "react-router";
-
-import type { loader } from "~/root";
 import Button from "~/components/Button";
+import type { loader } from "~/root";
 
 function MainThemeSwitch() {
   const loaderData = useRouteLoaderData<typeof loader>("root");
@@ -23,7 +22,8 @@ function MainThemeSwitch() {
     <Button
       variant="none"
       onPress={pressHandler}
-      className="p-3 bg-base rounded-full text-overlay-1">
+      className="p-3 bg-base rounded-full text-overlay-1"
+    >
       {theme === "dark" && <FaSun size={16} />}
       {theme === "light" && <FaMoon size={16} />}
     </Button>
