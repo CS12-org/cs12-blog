@@ -1,5 +1,5 @@
 body {
-  @apply selection:bg-transparent selection:decoration-wavy selection:underline bg-base text-text;
+  @apply selection:bg-[#283951] selection:text-white bg-base text-text;
 }
 
 button,
