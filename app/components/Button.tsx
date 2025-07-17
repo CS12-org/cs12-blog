@@ -5,7 +5,7 @@ import twMerge from "~/lib/tw-merge";
 type Props = Omit<ComponentProps<typeof AriaButton>, "className"> & {
   className?: string;
   variant?: "outline" | "fill" | "none";
-  isDisabled?: boolean;  
+  isDisabled?: boolean;
 };
 
 const VARIANTS = {
@@ -16,7 +16,12 @@ const VARIANTS = {
 } as const;
 
 function Button(props: Props) {
-  const { className = "", variant = "fill", isDisabled = false, ...other } = props;
+  const {
+    className = "",
+    variant = "fill",
+    isDisabled = false,
+    ...other
+  } = props;
 
   const variantStyle = isDisabled ? VARIANTS.disabled : VARIANTS[variant];
 

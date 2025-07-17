@@ -21,7 +21,7 @@ function MainThemeSwitch() {
   return (
     <Button
       variant="none"
-        isDisabled={true}
+      isDisabled={true}
       onPress={pressHandler}
       className="p-3 bg-base rounded-full text-overlay-1"
     >

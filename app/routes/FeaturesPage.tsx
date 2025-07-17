@@ -1,13 +1,13 @@
 import { FaRegClock } from "react-icons/fa6";
-import Dottcircle from "../assets/images/dottcircle.svg?react";
 import Check from "../assets/images/check.svg?react";
-import type { Route } from './+types/FeaturesPage';
+import Dottcircle from "../assets/images/dottcircle.svg?react";
+import type { Route } from "./+types/FeaturesPage";
 
 enum FeatureStatus {
   NOT_YET,
   PENDING,
-  COMPLETED
-};
+  COMPLETED,
+}
 
 const FeatureStatusIcon = {
   [FeatureStatus.COMPLETED]: <Check className="ml-[-1px]" />,
@@ -18,7 +18,7 @@ const FeatureStatusIcon = {
 const pageFeatures = [
   {
     title: "خانه",
-    status: FeatureStatus.PENDING
+    status: FeatureStatus.PENDING,
   },
   {
     title: "درباره ما : لندینگ پیج CS12",
@@ -26,76 +26,76 @@ const pageFeatures = [
   },
   {
     title: "یوزر پروفایل",
-    status: FeatureStatus.PENDING
+    status: FeatureStatus.PENDING,
   },
   {
     title: "یوزر پنل",
-    status: FeatureStatus.PENDING
-  }, 
+    status: FeatureStatus.PENDING,
+  },
   {
     title: "پست پیج",
-    status: FeatureStatus.PENDING
+    status: FeatureStatus.PENDING,
   },
   {
     title: "ارور پیج",
-    status: FeatureStatus.PENDING
+    status: FeatureStatus.PENDING,
   },
   {
     title: "سکشن چالش های هفتگی : در ورژن بعدی",
-    status: FeatureStatus.NOT_YET
+    status: FeatureStatus.NOT_YET,
   },
   {
     title: "تِرَک پیج",
-    status: FeatureStatus.PENDING
+    status: FeatureStatus.PENDING,
   },
   {
     title: "کتگوری پیج",
-    status: FeatureStatus.PENDING
-  }
+    status: FeatureStatus.PENDING,
+  },
 ];
 
 const coreFeatures = [
   {
     title: "هایلایت و یادداشت پرایوت",
     status: FeatureStatus.PENDING,
-    desc: "در هر پست شما میتونید روی هر سکشنی که دوست دارید متن رو هایلایت کنید و سپس یک یادداشت شخصی برای خودتون بگذارید"
+    desc: "در هر پست شما میتونید روی هر سکشنی که دوست دارید متن رو هایلایت کنید و سپس یک یادداشت شخصی برای خودتون بگذارید",
   },
   {
     title: "امکان به اشتراک گذاری هایلایت ها و یادداشت",
     status: FeatureStatus.PENDING,
-    desc: "هر بار که احساس کردید هایلایت هاتون خفنه میتونید با یه کامیت اون یادداشت و هایلایت رو به اشتراک بگذارید تا همه بتونن ازش استفاده کنن و حتی نقد و بررسیش کنن بهش لایک و دیسلایک بدن و خلاصه آره باعث میشه که صفحه غنی تر از صرفا محتوایی بشه که نویسنده نوشته"
+    desc: "هر بار که احساس کردید هایلایت هاتون خفنه میتونید با یه کامیت اون یادداشت و هایلایت رو به اشتراک بگذارید تا همه بتونن ازش استفاده کنن و حتی نقد و بررسیش کنن بهش لایک و دیسلایک بدن و خلاصه آره باعث میشه که صفحه غنی تر از صرفا محتوایی بشه که نویسنده نوشته",
   },
   {
     title: "نقد و بررسی",
     status: FeatureStatus.PENDING,
-    desc: "تصمیم گرفتیم برای بهتر کردن فضای فنی کامیونیتی یک سکشن به اسم نقد و بررسی در نظر بگیریم که افراد بتونند درحقیقت زیر هر پست یه پست بنویسن که پست رو نقد و بررسی کنه عکس داشته باشه پاورقی داشته باشه و حتی بشه روش کامنت گذاشت و بحث کرد و حتی بشه ریتش کرد."
+    desc: "تصمیم گرفتیم برای بهتر کردن فضای فنی کامیونیتی یک سکشن به اسم نقد و بررسی در نظر بگیریم که افراد بتونند درحقیقت زیر هر پست یه پست بنویسن که پست رو نقد و بررسی کنه عکس داشته باشه پاورقی داشته باشه و حتی بشه روش کامنت گذاشت و بحث کرد و حتی بشه ریتش کرد.",
   },
   {
     title: "روتین سازی + تِرَک کردن آموزش",
     status: FeatureStatus.PENDING,
-    desc: "وقتی قراره یه چیزی رو یاد بگیریم بهتره که سشن های یادگیری اینجوری باشند که بشه به شکل یه روتین قابل انجام بهشون نگاه کرد و در نهایت بتونیم وضعیت چیزایی که یادگرفتیم رو بدونیم و از همه مهم تر مدام پروژه بزنیم."
+    desc: "وقتی قراره یه چیزی رو یاد بگیریم بهتره که سشن های یادگیری اینجوری باشند که بشه به شکل یه روتین قابل انجام بهشون نگاه کرد و در نهایت بتونیم وضعیت چیزایی که یادگرفتیم رو بدونیم و از همه مهم تر مدام پروژه بزنیم.",
   },
   {
     title: "امکان سلکت و دی سلکت کردن کورس های آموزشی ",
     status: FeatureStatus.PENDING,
-    desc: "شما میتونید مثلا بخش programming رو بردارید و مثلا فقط زبان c از توش یاد بگیرید و کاری به باقیه کورس ها نداشته باشید اینجوری هم ترک کردن شما راحت تره و هم این که بهتر میتونی روی یه مطلب تمرکز کنی"
+    desc: "شما میتونید مثلا بخش programming رو بردارید و مثلا فقط زبان c از توش یاد بگیرید و کاری به باقیه کورس ها نداشته باشید اینجوری هم ترک کردن شما راحت تره و هم این که بهتر میتونی روی یه مطلب تمرکز کنی",
   },
-]
+];
 
 export const meta: Route.MetaFunction = () => {
   return [
     { title: "CS12 – Feature Track Page" },
     {
       name: "description",
-      content: "Track the development stages and new features of the CS12 web application, designed to empower developers and learners through deep foundational tools."
+      content:
+        "Track the development stages and new features of the CS12 web application, designed to empower developers and learners through deep foundational tools.",
     },
     {
       name: "robots",
-      content: "index, follow"
-    }
+      content: "index, follow",
+    },
   ];
 };
-
 
 function Features() {
   return (
@@ -105,7 +105,9 @@ function Features() {
           داستان این صفحه چیه؟
         </h2>
         <p className="text-overlay-2">
-          این صفحه ساخته شده که شما بتونید از استیج پروژه وب اپ و حتی فیچر ها و برنامه های آینده ما خبر دار بشید و ببینید چه فیچر هایی زده شده و چه فیچر هایی قراره زده بشه و خلاصه چه اتفاقی داره میوفته .
+          این صفحه ساخته شده که شما بتونید از استیج پروژه وب اپ و حتی فیچر ها و
+          برنامه های آینده ما خبر دار بشید و ببینید چه فیچر هایی زده شده و چه
+          فیچر هایی قراره زده بشه و خلاصه چه اتفاقی داره میوفته .
         </p>
       </section>
       <section className="text-white w-full h-auto bg-crust rounded-xl px-7.5 py-4 flex flex-col content-center gap-y-2.5">
@@ -117,11 +119,15 @@ function Features() {
         </p>
       </section>
       <ul className="w-full h-auto flex flex-col bg-crust py-4 rounded-xl">
-        {pageFeatures.map(item =>
-        (<li key={item.title} className="flex justify-between bg-mantle h-auto px-7.5 py-2 content-center items-center border-b-[1px] border-base">
-          <p>{item.title}</p>
-          {FeatureStatusIcon[item.status]}
-        </li>))}
+        {pageFeatures.map((item) => (
+          <li
+            key={item.title}
+            className="flex justify-between bg-mantle h-auto px-7.5 py-2 content-center items-center border-b-[1px] border-base"
+          >
+            <p>{item.title}</p>
+            {FeatureStatusIcon[item.status]}
+          </li>
+        ))}
       </ul>
       <section className="text-white w-full h-auto bg-crust rounded-xl px-7.5 py-4 flex flex-col content-center gap-y-2.5">
         <h2 className="text-headline-sm lg:text-headline-lg">فیچر ها</h2>
@@ -132,13 +138,20 @@ function Features() {
       </section>
 
       <ul className="w-full h-auto flex flex-col bg-crust py-4 rounded-xl font-bold">
-        {coreFeatures.map(item => (
-          <li key={item.title} className="bg-mantle h-auto px-7.5 py-2 border-b-[1px] border-base">
+        {coreFeatures.map((item) => (
+          <li
+            key={item.title}
+            className="bg-mantle h-auto px-7.5 py-2 border-b-[1px] border-base"
+          >
             <div className="flex justify-between content-center items-center">
               <p>{item.title}</p>
               {FeatureStatusIcon[item.status]}
             </div>
-            {item.desc && <p className="text-overlay-2 font-normal pt-3 pl-5">{item.desc}</p>}
+            {item.desc && (
+              <p className="text-overlay-2 font-normal pt-3 pl-5">
+                {item.desc}
+              </p>
+            )}
           </li>
         ))}
       </ul>

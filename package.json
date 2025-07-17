@@ -7,7 +7,8 @@
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
-    "prepare": "husky"
+    "prepare": "husky",
+    "format": "npx @biomejs/biome format --write"
   },
   "dependencies": {
     "@react-router/node": "^7.6.0",
