@@ -1,11 +1,11 @@
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Input, Label, TextField } from "react-aria-components";
+import { Controller, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router";
 import { twJoin } from "tailwind-merge";
 import { z } from "zod";
 import SamanCharacter from "~/assets/images/SM.svg?url";
 import Button from "~/components/Button";
-import { Controller, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Input, Label, TextField } from "react-aria-components";
 
 type FormFields = z.infer<typeof schema>;
 
@@ -25,7 +25,7 @@ function Login() {
     },
   });
 
-  const submitHandler = handleSubmit(values => {
+  const submitHandler = handleSubmit((values) => {
     console.log(values);
   });
 
@@ -34,7 +34,8 @@ function Login() {
       <form
         autoComplete="off"
         onSubmit={submitHandler}
-        className="relative flex flex-col items-stretch my-auto bg-crust rounded-2xl p-5 w-full max-w-sm">
+        className="relative flex flex-col items-stretch my-auto bg-crust rounded-2xl p-5 w-full max-w-sm"
+      >
         <img
           src={SamanCharacter}
           alt="animated character"
@@ -47,7 +48,8 @@ function Login() {
           className={twJoin(
             "font-bold text-4xl mb-7 text-center",
             "flex gap-2 justify-center",
-          )}>
+          )}
+        >
           <span className="text-rosewater animate-fade">و</span>
           <span className="text-pink animate-fade animate-delay-200">ر</span>
           <span className="text-mauve animate-fade animate-delay-400">و</span>
@@ -64,7 +66,8 @@ function Login() {
               value={field.value}
               onBlur={field.onBlur}
               onChange={field.onChange}
-              isDisabled={field.disabled}>
+              isDisabled={field.disabled}
+            >
               <Label className="hidden">نام کاربری یا ایمیل</Label>
               <Input
                 ref={field.ref}
@@ -85,7 +88,8 @@ function Login() {
               value={field.value}
               onBlur={field.onBlur}
               onChange={field.onChange}
-              isDisabled={field.disabled}>
+              isDisabled={field.disabled}
+            >
               <Label className="hidden">رمز عبور</Label>
               <Input
                 ref={field.ref}
@@ -99,7 +103,8 @@ function Login() {
         <Link
           rel="nofollow"
           to="/forgot-password"
-          className="text-lavender hover:underline rounded-md self-start">
+          className="text-lavender hover:underline rounded-md self-start"
+        >
           رمز عبورم رو فراموش کردم!
         </Link>
 
@@ -111,7 +116,8 @@ function Login() {
             type="button"
             variant="outline"
             className="py-2 px-4"
-            onPress={() => navigate("/signup")}>
+            onPress={() => navigate("/signup")}
+          >
             ثبت نام
           </Button>
         </div>
