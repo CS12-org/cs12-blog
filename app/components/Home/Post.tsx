@@ -1,6 +1,13 @@
+import {
+  FaBookmark,
+  FaComments,
+  FaHandsClapping,
+  FaRegBookmark,
+} from "react-icons/fa6";
 import { Link } from "react-router";
 import { twMerge } from "tailwind-merge";
 import PostExampleImg from "~/assets/images/post-example.png?url";
+import Button from "../Button";
 
 const items = ["#بش", "#اسکریپت", "#شل_اسکریپت", "#ترمینال"];
 const colors = ["text-peach", "text-mauve", "text-yellow"];
@@ -28,8 +35,8 @@ function Post() {
           </p>
         </div>
       </main>
-      <footer className="pt-7 px-2.5 pb-5">
-        <ul className="flex items-baseline text-body-xs gap-2.5">
+      <footer className="pt-7 px-2.5 pb-5 text-body-xs">
+        <ul className="flex items-baseline gap-2.5 mb-4">
           {items.map((item, index) => (
             <li
               key={item}
@@ -45,6 +52,23 @@ function Post() {
             </li>
           ))}
         </ul>
+
+        <div className="flex items-center gap-5">
+          <Button className="flex items-center gap-1.5" variant="none">
+            <FaComments size={20} className="text-overlay-1" />
+            <span className="pt-1.5 text-white">نظرات</span>
+          </Button>
+
+          <Button className="flex items-center gap-1.5" variant="none">
+            <FaHandsClapping size={20} className="text-overlay-1" />
+            <span className="pt-1.5 text-white">52</span>
+          </Button>
+
+          <p className="pt-1.5 text-white mr-auto">3 دقیقه</p>
+          <Button variant="none">
+            <FaRegBookmark size={16} className="text-overlay-1" />
+          </Button>
+        </div>
       </footer>
     </article>
   );
