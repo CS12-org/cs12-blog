@@ -1,5 +1,9 @@
 import { Link } from "react-router";
+import { twMerge } from "tailwind-merge";
 import PostExampleImg from "~/assets/images/post-example.png?url";
+
+const items = ["#بش", "#اسکریپت", "#شل_اسکریپت", "#ترمینال"];
+const colors = ["text-peach", "text-mauve", "text-yellow"];
 
 function Post() {
   return (
@@ -11,22 +15,37 @@ function Post() {
       </header>
       <main>
         <Link to="#">
-          <h3 className="text-headline-md lg:text-headline-lg px-5 pt-4 pb-2.5 truncate">
-            یادگیری بَش اسکریپت قسمت اول
+          <h3 className="text-headline-md lg:text-headline-lg px-2.5 pt-4 pb-2.5 truncate">
+            یادگیری بش اسکریپت قسمت اول
           </h3>
         </Link>
 
         <div className="bg-mantle py-2.5 flex items-stretch">
-          <span
-            aria-hidden
-            className="block w-[5px] shrink-0 bg-teal rounded-full"
-          />
+          <div aria-hidden className="w-[5px] shrink-0 bg-teal rounded-full" />
           <p className="truncate text-subtext-0 grow px-2.5">
-            در این قسمت ما در مورد ترمینال ها و اطلاعات این چنینی یاد میگیریمِ،
+            در این قسمت ما در مورد ترمینال ها و اطلاعات این چنینی یاد میگیریم،
             مطالبی که به ما کمک میکند و این یک متن بلند است برای تست
           </p>
         </div>
       </main>
+      <footer className="pt-7 px-2.5 pb-5">
+        <ul className="flex items-baseline text-body-xs gap-2.5">
+          {items.map((item, index) => (
+            <li
+              key={item}
+              className={twMerge(
+                colors[(index - 1) % colors.length],
+                "first-of-type:bg-surface-2 first-of-type:text-text",
+                "first-of-type:rounded first-of-type:px-2.5",
+                "first-of-type:py-0.5 hover:brightness-110",
+                "active:brightness-90 transition-[filter]",
+              )}
+            >
+              <Link to="#">{item}</Link>
+            </li>
+          ))}
+        </ul>
+      </footer>
     </article>
   );
 }
