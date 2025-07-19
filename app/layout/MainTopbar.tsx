@@ -1,4 +1,4 @@
-import type { Dispatch, SetStateAction } from "react";
+import { useState, type Dispatch, type SetStateAction } from "react";
 import {
   FaArrowRightToBracket,
   FaBook,
@@ -10,82 +10,103 @@ import Logo from "~/assets/images/cs12-logo.svg?react";
 import Button from "~/components/Button";
 import twMerge from "~/lib/tw-merge";
 import MainThemeSwitch from "./MainThemeSwitch";
+import { Input } from "react-aria-components";
 
 type Props = {
   mobileSidebarOpen: boolean;
   onMobileSidebarChange: Dispatch<SetStateAction<boolean>>;
+  isBlured?: boolean;
 };
 
 function MainTopbar(props: Props) {
-  const { onMobileSidebarChange, mobileSidebarOpen } = props;
-
+  const { onMobileSidebarChange, mobileSidebarOpen, isBlured = false } = props;
+  const [focused, setFocused] = useState(false);
   return (
     <header
       className={twJoin(
         "h-17.5 rounded-xl bg-crust mt-8",
-        "flex items-center px-4 [&>button]:bg-base",
+        "flex items-center px-4",
         "gap-3.5 [&>*]:shrink-0 lg:px-7.5",
-        "[&>button]:text-overlay-1 relative",
-        "z-11 select-none pointer-events-none",
+        "relative z-11 select-none",
       )}
-      style={
-        {
-          WebkitUserSelect: "none",
-          userSelect: "none",
-          ["WebkitUserDrag"]: "none",
-        } as any
-      }
+      style={{
+        WebkitUserSelect: "none",
+        userSelect: "none",
+        WebkitUserDrag: "none",
+      } as any}
     >
+   
       <Logo />
 
-      <nav className="hidden text-body-sm mr-3.5 lg:block blur-xs">
-        <ul className="flex gap-7">
-          <li>
-            <Link to="#" className="cursor-default select-none">
-              جوخه
-            </Link>
-          </li>
-          <li>
-            <Link to="#" className="cursor-default select-none">
-              بمان تا با
-            </Link>
-          </li>
-          <li>
-            <Link to="#" className="cursor-default select-none">
-              دوباره
-            </Link>
-          </li>
-          <li className="text-maroon">
-            <Link to="#" rel="help" className="cursor-default select-none">
-              کشک
-            </Link>
-          </li>
-        </ul>
-      </nav>
+ 
+      <div
+        className={twJoin(
+          "flex items-center grow gap-3.5",
+          isBlured && "blur-[4px] pointer-events-none"
+        )}
+      >
+        <nav className="hidden text-body-sm mr-3.5 lg:block">
+          <ul className="flex gap-7">
+            <li>
+              <Link to="#" className="cursor-default select-none">
+                جوخه
+              </Link>
+            </li>
+            <li>
+              <Link to="#" className="cursor-default select-none">
+                بمان تا با
+              </Link>
+            </li>
+            <li>
+              <Link to="#" className="cursor-default select-none">
+                دوباره
+              </Link>
+            </li>
+            <li className="text-maroon">
+              <Link to="#" rel="help" className="cursor-default select-none">
+                کشک
+              </Link>
+            </li>
+          </ul>
+        </nav>
 
-      <div aria-hidden className="grow" />
+        <div aria-hidden className="grow" />
 
-      <span className="blur-xs">
-        <Button
-          variant="none"
-          onPress={() => onMobileSidebarChange((prev) => !prev)}
-          className={twMerge(
-            "p-3 rounded-lg lg:hidden select-none ",
-            mobileSidebarOpen && "!bg-sapphire !text-crust",
-          )}
-        >
-          <FaBook size={16} />
-        </Button>
-        <Button variant="none" className="p-3 rounded-lg cursor-default">
-          <FaMagnifyingGlass size={16} />
-        </Button>
-        <Button variant="none" className="p-3 rounded-lg cursor-default">
-          <FaArrowRightToBracket size={16} />
-        </Button>
-      </span>
-      <span className="blur-xs select-none">
-        <MainThemeSwitch />
-      </span>
+        <span className="flex gap-x-4">
+          <Button
+            variant="none"
+            onPress={() => onMobileSidebarChange((prev) => !prev)}
+            className={twMerge(
+              "p-3 rounded-lg lg:hidden ",
+              mobileSidebarOpen && "!bg-sapphire !text-crust"
+            )}
+          >
+            <FaBook size={16} />
+          </Button>
+      <div className="relative w-10 h-10">
+  <Input
+    aria-label="سرچ بار"
+      placeholder={focused ? "جست‌وجو کنید" : ""}
+        onFocus={() => setFocused(true)}
+            onBlur={() => setFocused(false)}  
+    className="w-10 h-10 rounded-lg bg-base absolute left-0 focus:p-2.5 placeholder:text-xs text-xs placeholder:text-text focus:outline-none focus:w-[245px]  lg:focus:w-[660px] transition-all duration-200 ease-in-out cursor-pointer"
+  />
+  <FaMagnifyingGlass
+    size={16}
+    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer "
+  />
+</div>
+
+     
+          <Button variant="none" aria-label="دکمه ورود" className="p-3 rounded-lg cursor-default bg-base">
+            <FaArrowRightToBracket size={16} />
+          </Button>
+        </span>
+
+        <span className="select-none">
+          <MainThemeSwitch />
+        </span>
+      </div>
     </header>
   );
 }

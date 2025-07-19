@@ -13,6 +13,7 @@ function Main() {
         <MainTopbar
           mobileSidebarOpen={mobileSidebarOpen}
           onMobileSidebarChange={setMobileSidebarOpen}
+            isBlured={false}
         />
         <main>
           <Outlet />
