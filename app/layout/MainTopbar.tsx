@@ -14,78 +14,86 @@ import MainThemeSwitch from "./MainThemeSwitch";
 type Props = {
   mobileSidebarOpen: boolean;
   onMobileSidebarChange: Dispatch<SetStateAction<boolean>>;
+  isBlured?: boolean;
 };
 
 function MainTopbar(props: Props) {
-  const { onMobileSidebarChange, mobileSidebarOpen } = props;
+  const { onMobileSidebarChange, mobileSidebarOpen, isBlured = false } = props;
 
   return (
     <header
       className={twJoin(
         "h-17.5 rounded-xl bg-crust mt-8",
-        "flex items-center px-4 [&>button]:bg-base",
+        "flex items-center px-4",
         "gap-3.5 [&>*]:shrink-0 lg:px-7.5",
-        "[&>button]:text-overlay-1 relative",
-        "z-11 select-none pointer-events-none",
+        "relative z-11 select-none",
       )}
-      style={
-        {
-          WebkitUserSelect: "none",
-          userSelect: "none",
-          ["WebkitUserDrag"]: "none",
-        } as any
-      }
+      style={{
+        WebkitUserSelect: "none",
+        userSelect: "none",
+        WebkitUserDrag: "none",
+      } as any}
     >
+   
       <Logo />
 
-      <nav className="hidden text-body-sm mr-3.5 lg:block blur-xs">
-        <ul className="flex gap-7">
-          <li>
-            <Link to="#" className="cursor-default select-none">
-              جوخه
-            </Link>
-          </li>
-          <li>
-            <Link to="#" className="cursor-default select-none">
-              بمان تا با
-            </Link>
-          </li>
-          <li>
-            <Link to="#" className="cursor-default select-none">
-              دوباره
-            </Link>
-          </li>
-          <li className="text-maroon">
-            <Link to="#" rel="help" className="cursor-default select-none">
-              کشک
-            </Link>
-          </li>
-        </ul>
-      </nav>
+ 
+      <div
+        className={twJoin(
+          "flex items-center grow gap-3.5",
+          isBlured && "blur-[4px] pointer-events-none"
+        )}
+      >
+        <nav className="hidden text-body-sm mr-3.5 lg:block">
+          <ul className="flex gap-7">
+            <li>
+              <Link to="#" className="cursor-default select-none">
+                جوخه
+              </Link>
+            </li>
+            <li>
+              <Link to="#" className="cursor-default select-none">
+                بمان تا با
+              </Link>
+            </li>
+            <li>
+              <Link to="#" className="cursor-default select-none">
+                دوباره
+              </Link>
+            </li>
+            <li className="text-maroon">
+              <Link to="#" rel="help" className="cursor-default select-none">
+                کشک
+              </Link>
+            </li>
+          </ul>
+        </nav>
 
-      <div aria-hidden className="grow" />
+        <div aria-hidden className="grow" />
 
-      <span className="blur-xs">
-        <Button
-          variant="none"
-          onPress={() => onMobileSidebarChange((prev) => !prev)}
-          className={twMerge(
-            "p-3 rounded-lg lg:hidden select-none ",
-            mobileSidebarOpen && "!bg-sapphire !text-crust",
-          )}
-        >
-          <FaBook size={16} />
-        </Button>
-        <Button variant="none" className="p-3 rounded-lg cursor-default">
-          <FaMagnifyingGlass size={16} />
-        </Button>
-        <Button variant="none" className="p-3 rounded-lg cursor-default">
-          <FaArrowRightToBracket size={16} />
-        </Button>
-      </span>
-      <span className="blur-xs select-none">
-        <MainThemeSwitch />
-      </span>
+        <span>
+          <Button
+            variant="none"
+            onPress={() => onMobileSidebarChange((prev) => !prev)}
+            className={twMerge(
+              "p-3 rounded-lg lg:hidden ",
+              mobileSidebarOpen && "!bg-sapphire !text-crust"
+            )}
+          >
+            <FaBook size={16} />
+          </Button>
+          <Button variant="none" className="p-3 rounded-lg cursor-default">
+            <FaMagnifyingGlass size={16} />
+          </Button>
+          <Button variant="none" className="p-3 rounded-lg cursor-default">
+            <FaArrowRightToBracket size={16} />
+          </Button>
+        </span>
+
+        <span className="select-none">
+          <MainThemeSwitch />
+        </span>
+      </div>
     </header>
   );
 }
