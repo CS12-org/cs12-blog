@@ -1,9 +1,4 @@
-import {
-  FaBookmark,
-  FaComments,
-  FaHandsClapping,
-  FaRegBookmark,
-} from "react-icons/fa6";
+import { FaComments, FaHandsClapping, FaRegBookmark } from "react-icons/fa6";
 import { Link } from "react-router";
 import { twMerge } from "tailwind-merge";
 import PostExampleImg from "~/assets/images/post-example.png?url";
