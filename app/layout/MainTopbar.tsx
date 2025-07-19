@@ -1,4 +1,4 @@
-import type { Dispatch, SetStateAction } from "react";
+import { useState, type Dispatch, type SetStateAction } from "react";
 import {
   FaArrowRightToBracket,
   FaBook,
@@ -10,6 +10,7 @@ import Logo from "~/assets/images/cs12-logo.svg?react";
 import Button from "~/components/Button";
 import twMerge from "~/lib/tw-merge";
 import MainThemeSwitch from "./MainThemeSwitch";
+import { Input } from "react-aria-components";
 
 type Props = {
   mobileSidebarOpen: boolean;
@@ -19,7 +20,7 @@ type Props = {
 
 function MainTopbar(props: Props) {
   const { onMobileSidebarChange, mobileSidebarOpen, isBlured = false } = props;
-
+  const [focused, setFocused] = useState(false);
   return (
     <header
       className={twJoin(
@@ -71,7 +72,7 @@ function MainTopbar(props: Props) {
 
         <div aria-hidden className="grow" />
 
-        <span>
+        <span className="flex gap-x-4">
           <Button
             variant="none"
             onPress={() => onMobileSidebarChange((prev) => !prev)}
@@ -82,10 +83,22 @@ function MainTopbar(props: Props) {
           >
             <FaBook size={16} />
           </Button>
-          <Button variant="none" className="p-3 rounded-lg cursor-default">
-            <FaMagnifyingGlass size={16} />
-          </Button>
-          <Button variant="none" className="p-3 rounded-lg cursor-default">
+      <div className="relative w-10 h-10">
+  <Input
+    aria-label="سرچ بار"
+      placeholder={focused ? "جست‌وجو کنید" : ""}
+        onFocus={() => setFocused(true)}
+            onBlur={() => setFocused(false)}  
+    className="w-10 h-10 rounded-lg bg-base absolute left-0 focus:p-2.5 placeholder:text-xs text-xs placeholder:text-text focus:outline-none focus:w-[245px]  lg:focus:w-[660px] transition-all duration-200 ease-in-out cursor-pointer"
+  />
+  <FaMagnifyingGlass
+    size={16}
+    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer "
+  />
+</div>
+
+     
+          <Button variant="none" aria-label="دکمه ورود" className="p-3 rounded-lg cursor-default bg-base">
             <FaArrowRightToBracket size={16} />
           </Button>
         </span>
