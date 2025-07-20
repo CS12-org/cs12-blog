@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import { Link } from "react-router";
 import { twJoin } from "tailwind-merge";
-import Mohammadhoseincharacter from "~/assets/images/MH.svg?url";
+import Payamcharacter from "~/assets/images/PY.svg?url";
 import Button from "~/components/Button";
 import React, { useState } from "react";
 
@@ -15,34 +15,39 @@ function Login() {
   if (!isHasSent)
     return (
       <main className="min-h-dvh flex flex-col items-center">
-        <form className="relative flex flex-col items-stretch my-auto bg-crust rounded-2xl p-5  w-[360px] h-[168] ">
-         <img
-  src={Mohammadhoseincharacter}
-  alt="animated character"
-  className={twJoin(
-    "animate-fade-up animate-duration-1000 animate-delay-500",
-    "absolute bottom-[165px] left-1/2 -translate-x-1/2 w-25 -z-1",
-    "w-[150px] h-[204px]",
-  )}
-/>
+        <form className="relative flex flex-col items-stretch my-auto bg-crust rounded-2xl p-5 w-[360px] h-[230px] max-w-sm">
+          <img
+            src={Payamcharacter}
+            alt="animated character"
+            className={twJoin(
+              "animate-fade-up animate-duration-1000 animate-delay-500",
+              "absolute bottom-[210px] left-1/2 -translate-x-1/2 w-25 -z-1",
+              "w-[150px] h-[204px]",
+            )}
+          />
           <h1
             className={twJoin(
-              "font-bold text-3x1 mb-6 text-center",
-              "flex gap-2 justify-center items-center ",
+              "font-bold text-3x1 mb-7 text-center",
+              "flex gap-2 justify-center flex items-center ",
             )}>
-            <span className="text-base leading-6 text-white tracking-normal text-center align-middle font-body-md w-[320px] h-[24px]">
-              کد تغییر رمز رو دریافت کن
+            <span className="text-base leading-6 text-white tracking-normal text-center align-middle font-body-md mb-[-10px]  w-[320px] h-[24px]">
+              تغییر رمز عبور
             </span>
           </h1>
 
           <input
-            placeholder="ایمیل خود را وارد کنید"
-            className="bg-surface-0 mb- px-2.5 py-2 w-[320px] h-[42px] rounded-[10px]"/>
+            placeholder="رمز جدید"
+            className="bg-surface-0 mb-4 rounded-md px-2.5 py-2 w-[320px] h-[42px] mb-[15px] rounded-[10px]"
+          />
+          <input
+            placeholder="تایید رمز جدید"
+            className="bg-surface-0 mb-4 rounded-md px-2.5 py-2 w-[320px] h-[42px] rounded-[10px]"
+          />
 
-          <div className="mt-4 flex gap-2 w-[320px] h-[42px] border rounded-[10px]">
+          <div className="mt-0 flex gap-2 w-[320px] h-[42px] rounded-[10px]">
             <Button
               type="submit"
-              className="py-2 grow "
+              className="py-2 grow"
               onClick={handleSubmitClick}>
               تایید
             </Button>
@@ -80,7 +85,7 @@ function Login() {
 
 
         </div>
-        <button className="bg-indigo-300 text-black px-6 py-2 w-full  rounded-lg hover:bg-indigo-400 transition ">
+        <button className="bg-indigo-300 text-black px-6 py-2 w-[320px] h-[42px]  rounded-lg hover:bg-indigo-400 transition ">
  رفتن به ایمیل 
 </button>
       </div>

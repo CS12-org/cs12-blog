@@ -10,4 +10,5 @@ export default [
 
   route("/api/theme", "routes/api/theme.ts"),
   route("/forgot-password", "routes/Forgotpassword.tsx"),
+  route("/change-password", "routes/Changepassword.tsx"),
 ] satisfies RouteConfig;
