@@ -11,6 +11,8 @@ import TailwindCss from "~/assets/styles/main.css?url";
 import session from "./.server/session";
 
 import type { Route } from "./+types/root";
+import { Main } from "./layout/Main";
+import NotFoundPage from "./routes/NotFoundPage";
 
 export async function loader(args: Route.LoaderArgs) {
   const { request } = args;
@@ -69,11 +71,15 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
       error.status === 404
         ? "The requested page could not be found."
         : error.statusText || details;
+    return (
+      <Main>
+        <NotFoundPage />
+      </Main>
+    );
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;
     stack = error.stack;
   }
-
   return (
     <main className="pt-16 p-4 container mx-auto">
       <h1>{message}</h1>
