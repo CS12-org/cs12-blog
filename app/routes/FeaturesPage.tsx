@@ -14,13 +14,13 @@ const FeatureStatusIcon = {
   [FeatureStatus.COMPLETED]: <Check className="ml-[-1px]" />,
   [FeatureStatus.PENDING]: <FaRegClock className="h-5.5 w-5.5 text-yellow" />,
   [FeatureStatus.NOT_YET]: <Dottcircle className="ml-[-3px]" />,
-[FeatureStatus.API]: <TbApi className="h-5.5 w-5.5 " />,
+  [FeatureStatus.API]: <TbApi className="h-5.5 w-5.5 text-maroon" />,
 } as const;
 
 const pageFeatures = [
   {
     title: "خانه",
-    status: FeatureStatus.PENDING,
+    status: FeatureStatus.API,
   },
   {
     title: "درباره ما : لندینگ پیج CS12",
