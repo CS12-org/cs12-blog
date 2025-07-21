@@ -10,6 +10,9 @@ import {
  
 import { FaAnglesRight, FaFileCode, FaMicrochip, FaX } from "react-icons/fa6";
 import { RiUser3Fill } from "react-icons/ri";
+import { CiBookmark } from "react-icons/ci";
+import { TbNotes } from "react-icons/tb";
+import { BiMessageAltDetail } from "react-icons/bi";
 import Button from "~/components/Button";
 import { twJoin } from "tailwind-merge";
 import twMerge from "~/lib/tw-merge";
@@ -27,17 +30,17 @@ const groups = [
   },
   {
     slug: "#",
-    icon:  RiUser3Fill,
+    icon:  CiBookmark ,
     title: "پست های سیو شده",
   },
     {
     slug: "#",
-    icon: FaMicrochip,
+    icon: TbNotes,
     title: "یادداشت ها و هایلایت ها",
   },
       {
     slug: "#",
-    icon: FaMicrochip,
+    icon: BiMessageAltDetail,
     title: "نظرات و پرسش و پاسخ",
   },
 ];
@@ -58,7 +61,7 @@ function UserPanelList(props: Props) {
   }, []);
 
   const asideContents = (
-    <>
+    <> 
       <header className="flex items-center min-h-6.75">
         <AnimatePresence initial={false}>
           {!collapsed && (
@@ -89,6 +92,7 @@ function UserPanelList(props: Props) {
 
         <Button
           variant="none"
+          
           onPress={() => onMobileSidebarChange(false)}
           className={twMerge(
             "bg-base p-1.5 rounded-lg mr-auto shrink-0",
