@@ -41,17 +41,35 @@ interface MyCheckboxProps extends Omit<CheckboxProps, "children"> {
 
 function MyCheckbox({ children, ...props }: MyCheckboxProps) {
   return (
-    <Checkbox
-      className="group flex items-center selected:text-maroon bg-mantle p-4"
-      {...props}>
-      {children}
-      <div className="checkbox group-selected:p-4 group-selected:bg-red" aria-hidden="true">
-        <svg viewBox="0 0 18 18">
-          <polyline points="1 9 7 14 15 4" />
-        </svg>
-      </div>
+    <Checkbox {...props}>
+      {({ isSelected }) => (
+        <div className="flex items-center justify-between gap-2.5 w-full  ">
+          {/* باکس کلیک‌پذیر */}
+          <div
+            className={`flex-1 h-9 rounded-md px-3 py-2 text-xs text-subtext-1 cursor-pointer flex items-center  ${
+              isSelected ? "bg-mantle text-maroon" : "bg-mantle "
+            }`}
+          >
+            {children}
+          </div>
+
+          {/* دایره مستقل، ولی وابسته به isSelected */}
+          <div
+            className="relative h-9 w-9 shrink-0 flex items-center justify-center "
+            aria-hidden="true"
+          >
+            <div className="absolute h-9 w-9 rounded-md bg-base opacity-40 " />
+            <div
+              className={`relative h-4 w-4 rounded-full transition-colors duration-300 cursor-pointer ${
+                isSelected ? "bg-teal" : "bg-crust"
+              }`}
+            />
+          </div>
+        </div>
+      )}
     </Checkbox>
   );
 }
 
-export default MyCheckbox;
+
+export default  MyCheckbox;
