@@ -9,9 +9,9 @@ type ThemeSettingProps = {
 function ThemeSetting({ buttonText, bgColorClass }: ThemeSettingProps) {
   return (
     <div className="flex bg-mantle  rounded-md">
-      <div className={twMerge("", bgClassName)}> </div>
+      <div className={twMerge("h-3 w-3 m-2.5 rounded-bl rounded-tr", bgColorClass)}> </div>
     {/* <div className={`${bgColorClass} h-3 w-3 m-2.5 rounded-bl rounded-tr`}></div> */}
-      <Button className="m-2.5 text-xs ">{buttonText} </Button>
+      <Button variant="none" className="m-2.5 text-xs ">{buttonText} </Button>
     </div>
   );
 }
