@@ -2,17 +2,19 @@ import { FaRegClock } from "react-icons/fa6";
 import Check from "../assets/images/check.svg?react";
 import Dottcircle from "../assets/images/dottcircle.svg?react";
 import type { Route } from "./+types/FeaturesPage";
-
+import { TbApi } from "react-icons/tb";
 enum FeatureStatus {
   NOT_YET,
   PENDING,
   COMPLETED,
+  API,
 }
 
 const FeatureStatusIcon = {
   [FeatureStatus.COMPLETED]: <Check className="ml-[-1px]" />,
   [FeatureStatus.PENDING]: <FaRegClock className="h-5.5 w-5.5 text-yellow" />,
   [FeatureStatus.NOT_YET]: <Dottcircle className="ml-[-3px]" />,
+[FeatureStatus.API]: <TbApi className="h-5.5 w-5.5 " />,
 } as const;
 
 const pageFeatures = [
