@@ -24,7 +24,6 @@ function UserPanel() {
       />
 
       <main className="flex flex-col gap-2.5 w-full text-subtext-1">
-
         <header className="flex justify-between items-center">
           <h1 className="font-extrabold text-xl">اطلاعات اولیه پروفایل</h1>
           <Button className="bg-sapphire text-sm h-[36px] w-[39px] text-crust rounded">
@@ -57,7 +56,6 @@ function UserPanel() {
           </figure>
         </section>
 
-       
         <section className="flex flex-col gap-y-2.5 bg-crust p-5 rounded-xl">
           <h2 className="text-xs font-bold">
             تنظیمات رنگ قسمت سمت راست پروفایل :
@@ -66,20 +64,27 @@ function UserPanel() {
             <MyRadioGroup
               name="theme-color"
               options={[
-                { label: "lavender", bgColorClass: "bg-lavender", value: "lavender" },
+                {
+                  label: "lavender",
+                  bgColorClass: "bg-lavender",
+                  value: "lavender",
+                },
                 { label: "maroon", bgColorClass: "bg-maroon", value: "maroon" },
                 { label: "teal", bgColorClass: "bg-teal", value: "teal" },
                 { label: "peach", bgColorClass: "bg-peach", value: "peach" },
                 { label: "sky", bgColorClass: "bg-sky", value: "sky" },
                 { label: "mauve", bgColorClass: "bg-mauve", value: "mauve" },
                 { label: "pink", bgColorClass: "bg-pink", value: "pink" },
-                { label: "flamingo", bgColorClass: "bg-flamingo", value: "flamingo" },
+                {
+                  label: "flamingo",
+                  bgColorClass: "bg-flamingo",
+                  value: "flamingo",
+                },
               ]}
             />
           </div>
         </section>
 
-   
         <section className="flex flex-col w-full gap-2">
           <article className="flex items-center gap-x-2.5 bg-crust p-2 rounded-xl">
             <Button className="h-8 w-8 bg-mantle flex justify-center items-center rounded-md">
@@ -111,21 +116,24 @@ function UserPanel() {
           </article>
         </section>
 
-      
         <section>
           <h2 className="font-extrabold text-xl">تنظیمات</h2>
           <fieldset className="bg-crust rounded-xl p-2 w-full flex flex-col gap-y-2.5">
             <SettingCheckboxOption value="sss">
-              آیا ۱۰ تا از آخرین نظراتتون در صفحه پروفایلتون توسط دیگران دیده شود؟
+              آیا ۱۰ تا از آخرین نظراتتون در صفحه پروفایلتون توسط دیگران دیده
+              شود؟
             </SettingCheckboxOption>
             <SettingCheckboxOption value="sss1">
-              آیا قسمت زبان‌هایی که بلدید در صفحه پروفایلتون توسط دیگران دیده شود؟
+              آیا قسمت زبان‌هایی که بلدید در صفحه پروفایلتون توسط دیگران دیده
+              شود؟
             </SettingCheckboxOption>
             <SettingCheckboxOption value="sss2">
-              آیا قسمت هایلایت‌ها و یادداشت‌های شیر شده توسط شما در قسمت پروفایلتون قابل مشاهده باشد؟
+              آیا قسمت هایلایت‌ها و یادداشت‌های شیر شده توسط شما در قسمت
+              پروفایلتون قابل مشاهده باشد؟
             </SettingCheckboxOption>
             <SettingCheckboxOption value="sss3">
-              آیا قسمت سوشال مدیای شما در پروفایلتون قابل مشاهده توسط دیگران باشد؟
+              آیا قسمت سوشال مدیای شما در پروفایلتون قابل مشاهده توسط دیگران
+              باشد؟
             </SettingCheckboxOption>
             <SettingCheckboxOption value="sss4">
               آیا تصویر پروفایل شما برای دیگران قابل مشاهده باشد؟
@@ -139,7 +147,6 @@ function UserPanel() {
           </fieldset>
         </section>
 
-  
         <section>
           <h2 className="font-extrabold text-xl">درخواست ها</h2>
           <article className="flex items-center gap-x-2.5 bg-crust p-2 rounded-xl">
@@ -149,7 +156,6 @@ function UserPanel() {
           </article>
         </section>
 
-    
         <section>
           <h2 className="font-extrabold text-xl">تنظیمات اولیه</h2>
           <form className="flex flex-col gap-2.5">

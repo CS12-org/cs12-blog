@@ -1,8 +1,4 @@
-import {
-  RadioGroup,
-  Radio,
-  type RadioGroupProps,
-} from 'react-aria-components';
+import { RadioGroup, Radio, type RadioGroupProps } from "react-aria-components";
 
 interface ColorOption {
   label: string;
@@ -10,7 +6,7 @@ interface ColorOption {
   value: string;
 }
 
-interface ColorRadioGroupProps extends Omit<RadioGroupProps, 'children'> {
+interface ColorRadioGroupProps extends Omit<RadioGroupProps, "children"> {
   options: ColorOption[];
 }
 
@@ -22,18 +18,17 @@ function MyRadioGroup({ options, ...props }: ColorRadioGroupProps) {
           <Radio
             key={opt.value}
             value={opt.value}
-         className={`
+            className={`
   group flex items-center bg-mantle rounded-md border-2 border-transparent transition-all duration-200 cursor-pointer
-  ${opt.value === 'lavender' ? 'selected:border-lavender' : ''}
-  ${opt.value === 'maroon' ? 'selected:border-maroon' : ''}
-  ${opt.value === 'teal' ? 'selected:border-teal' : ''}
-  ${opt.value === 'peach' ? 'selected:border-peach' : ''}
-  ${opt.value === 'sky' ? 'selected:border-sky' : ''}
-  ${opt.value === 'mauve' ? 'selected:border-mauve' : ''}
-  ${opt.value === 'pink' ? 'selected:border-pink' : ''}
-  ${opt.value === 'flamingo' ? 'selected:border-flamingo' : ''}
+  ${opt.value === "lavender" ? "selected:border-lavender" : ""}
+  ${opt.value === "maroon" ? "selected:border-maroon" : ""}
+  ${opt.value === "teal" ? "selected:border-teal" : ""}
+  ${opt.value === "peach" ? "selected:border-peach" : ""}
+  ${opt.value === "sky" ? "selected:border-sky" : ""}
+  ${opt.value === "mauve" ? "selected:border-mauve" : ""}
+  ${opt.value === "pink" ? "selected:border-pink" : ""}
+  ${opt.value === "flamingo" ? "selected:border-flamingo" : ""}
 `}
-
           >
             <div
               className={`h-3 w-3 m-2.5 rounded-bl rounded-tr ${opt.bgColorClass}`}
@@ -46,13 +41,12 @@ function MyRadioGroup({ options, ...props }: ColorRadioGroupProps) {
   );
 }
 
-
 // import Button from "~/components/Button"
 // import twMerge from "~/lib/tw-merge";
 
 // type ThemeSettingProps = {
 //   buttonText: string;
-//   bgColorClass: string; 
+//   bgColorClass: string;
 // };
 
 // function ThemeSetting({ buttonText, bgColorClass }: ThemeSettingProps) {

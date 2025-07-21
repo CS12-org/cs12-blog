@@ -11,7 +11,8 @@ import {
   Text,
 } from "react-aria-components";
 
-interface SettingCheckboxGroupProps extends Omit<CheckboxGroupProps, "children"> {
+interface SettingCheckboxGroupProps
+  extends Omit<CheckboxGroupProps, "children"> {
   children?: React.ReactNode;
   label?: string;
   description?: string;
@@ -62,7 +63,9 @@ export function SettingCheckboxOption({
             <div className="absolute h-9 w-9 rounded-md bg-base" />
             <div
               className={`relative h-4 w-4 rounded-full transition-colors duration-300 cursor-pointer ${
-                isSelected ? "bg-rosewater shadow-[inset_5px_5px_5.8px_#ed8796]" : "bg-crust"
+                isSelected
+                  ? "bg-rosewater shadow-[inset_5px_5px_5.8px_#ed8796]"
+                  : "bg-crust"
               }`}
             />
           </div>

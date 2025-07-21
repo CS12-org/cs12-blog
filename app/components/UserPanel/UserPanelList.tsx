@@ -7,7 +7,7 @@ import {
   type Dispatch,
   type SetStateAction,
 } from "react";
- 
+
 import { FaAnglesRight, FaFileCode, FaMicrochip, FaX } from "react-icons/fa6";
 import { RiUser3Fill } from "react-icons/ri";
 import { CiBookmark } from "react-icons/ci";
@@ -25,20 +25,20 @@ type Props = {
 const groups = [
   {
     slug: "#",
-    icon:  RiUser3Fill,
-    title:"اطلاعات اولیه کاربر"
+    icon: RiUser3Fill,
+    title: "اطلاعات اولیه کاربر",
   },
   {
     slug: "#",
-    icon:  CiBookmark ,
+    icon: CiBookmark,
     title: "پست های سیو شده",
   },
-    {
+  {
     slug: "#",
     icon: TbNotes,
     title: "یادداشت ها و هایلایت ها",
   },
-      {
+  {
     slug: "#",
     icon: BiMessageAltDetail,
     title: "نظرات و پرسش و پاسخ",
@@ -61,7 +61,7 @@ function UserPanelList(props: Props) {
   }, []);
 
   const asideContents = (
-    <> 
+    <>
       <header className="flex items-center min-h-6.75">
         <AnimatePresence initial={false}>
           {!collapsed && (
@@ -70,7 +70,8 @@ function UserPanelList(props: Props) {
               exit={{ opacity: 0, width: 0 }}
               className="text-title-md truncate"
               initial={{ opacity: 0, width: 0 }}
-              animate={{ opacity: 1, width: "100%" }}>
+              animate={{ opacity: 1, width: "100%" }}
+            >
               مطالب سایت
             </motion.h2>
           )}
@@ -78,12 +79,13 @@ function UserPanelList(props: Props) {
 
         <Button
           variant="none"
-          onPress={() => setCollapsed(prev => !prev)}
+          onPress={() => setCollapsed((prev) => !prev)}
           className={twMerge(
             "bg-base p-1.5 rounded-lg mr-auto shrink-0",
             collapsed && "p-[17px] bg-mantle transition-all",
             "hidden lg:block",
-          )}>
+          )}
+        >
           <FaAnglesRight
             size={10}
             className={twJoin(collapsed ? "rotate-180" : "", "transition")}
@@ -92,19 +94,19 @@ function UserPanelList(props: Props) {
 
         <Button
           variant="none"
-          
           onPress={() => onMobileSidebarChange(false)}
           className={twMerge(
             "bg-base p-1.5 rounded-lg mr-auto shrink-0",
             "block lg:hidden",
-          )}>
+          )}
+        >
           <FaX size={10} className="text-red" />
         </Button>
       </header>
       <div role="separator" className="-mx-3 h-px bg-surface-0 my-3" />
       <nav className="text-body-sm">
         <ul className="flex flex-col items-stretch gap-1.5">
-          {groups.map(group => (
+          {groups.map((group) => (
             <li key={group.slug}>
               <Link
                 to={group.slug}
@@ -112,14 +114,16 @@ function UserPanelList(props: Props) {
                   "flex items-center justify-between bg-mantle p-2",
                   "hover:brightness-110 active:brightness-95 transition",
                   "rounded-md",
-                )}>
+                )}
+              >
                 <AnimatePresence initial={false}>
                   {!collapsed && (
                     <motion.span
                       className="truncate"
                       exit={{ opacity: 0, width: 0 }}
                       initial={{ opacity: 0, width: 0 }}
-                      animate={{ opacity: 1, width: "100%" }}>
+                      animate={{ opacity: 1, width: "100%" }}
+                    >
                       {group.title}
                     </motion.span>
                   )}
@@ -157,7 +161,8 @@ function UserPanelList(props: Props) {
           "transition-[width] hidden lg:block max-w-sm max-w-65",
           "sticky top-5",
           collapsed && "w-17",
-        )}>
+        )}
+      >
         {asideContents}
       </aside>
 
@@ -172,7 +177,8 @@ function UserPanelList(props: Props) {
               "fixed top-30.5 right-[calc((100%-384px)/2)]",
               "p-3 bg-crust w-full rounded-xl max-w-sm z-10",
               "lg:hidden",
-            )}>
+            )}
+          >
             {asideContents}
           </motion.aside>
         )}

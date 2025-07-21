@@ -7,12 +7,7 @@ type Props = {
   className?: string;
 };
 
-export function TextInput({
-  label,
-  name,
-  placeholder,
-  className = "",
-}: Props) {
+export function TextInput({ label, name, placeholder, className = "" }: Props) {
   return (
     <TextField name={name} className="flex flex-col gap-1 w-full">
       <Label className="text-sm font-medium">{label}</Label>
