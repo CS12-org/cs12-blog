@@ -20,13 +20,14 @@ function MainThemeSwitch() {
 
   return (
     <Button
+      aria-label="Button: Switch Theme"
       variant="none"
       isDisabled={true}
       onPress={pressHandler}
       className="p-3 bg-base rounded-full text-overlay-1"
     >
-      {theme === "dark" && <FaSun size={16} />}
-      {theme === "light" && <FaMoon size={16} />}
+      {theme === "dark" && <FaSun size={16} aria-hidden="true" />}
+      {theme === "light" && <FaMoon size={16} aria-hidden="true" />}
     </Button>
   );
 }
