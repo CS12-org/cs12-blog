@@ -1,8 +1,9 @@
 import { FaRegClock } from "react-icons/fa6";
+import { TbApi } from "react-icons/tb";
 import Check from "../assets/images/check.svg?react";
 import Dottcircle from "../assets/images/dottcircle.svg?react";
 import type { Route } from "./+types/FeaturesPage";
-import { TbApi } from "react-icons/tb";
+
 enum FeatureStatus {
   NOT_YET,
   PENDING,
@@ -11,16 +12,68 @@ enum FeatureStatus {
 }
 
 const FeatureStatusIcon = {
-  [FeatureStatus.COMPLETED]: <Check className="ml-[-1px]" />,
-  [FeatureStatus.PENDING]: <FaRegClock className="h-5.5 w-5.5 text-yellow" />,
-  [FeatureStatus.NOT_YET]: <Dottcircle className="ml-[-3px]" />,
-[FeatureStatus.API]: <TbApi className="h-5.5 w-5.5 " />,
+  [FeatureStatus.COMPLETED]: (
+    <section className="relative group inline-flex items-center">
+      <span
+        className="absolute max-w-[100px] bg-[#101120] text-[10px] font-semibold whitespace-nowrap 
+                       bottom-[calc(100%+4px)] group-hover:bottom-[calc(100%+16px)] px-2 py-1 rounded 
+                       text-center left-1/2 -translate-x-1/2 pointer-events-none transition-all 
+                       duration-700 ease-in-out opacity-0 group-hover:opacity-100 invisible 
+                       group-hover:visible border-2 border-[#24273a] "
+      >
+        ساخته شده
+      </span>
+      <Check className="ml-[-1px]" />
+    </section>
+  ),
+  [FeatureStatus.PENDING]: (
+    <section className="relative group inline-flex items-center">
+      <span
+        className="absolute max-w-[100px] bg-[#101120] text-[10px] font-semibold whitespace-nowrap 
+                       bottom-[calc(100%+4px)] group-hover:bottom-[calc(100%+16px)] px-2 py-1 rounded 
+                       text-center left-1/2 -translate-x-1/2 pointer-events-none transition-all 
+                       duration-700 ease-in-out opacity-0 group-hover:opacity-100 invisible 
+                       group-hover:visible border-2 border-[#24273a] "
+      >
+        در حال انجام
+      </span>
+      <FaRegClock className="h-5.5 w-5.5 text-yellow" />
+    </section>
+  ),
+  [FeatureStatus.NOT_YET]: (
+    <section className="relative group inline-flex items-center">
+      <span
+        className="absolute max-w-[100px] bg-[#101120] text-[10px] font-semibold whitespace-nowrap 
+                       bottom-[calc(100%+4px)] group-hover:bottom-[calc(100%+16px)] px-2 py-1 rounded 
+                       text-center left-1/2 -translate-x-1/2 pointer-events-none transition-all 
+                       duration-700 ease-in-out opacity-0 group-hover:opacity-100 invisible 
+                       group-hover:visible border-2 border-[#24273a] "
+      >
+        هنوز شروع نشده
+      </span>
+      <Dottcircle className="ml-[-3px]" />
+    </section>
+  ),
+  [FeatureStatus.API]: (
+    <section className="relative group inline-flex items-center">
+      <span
+        className="absolute max-w-[100px] bg-[#101120] text-[10px] font-semibold whitespace-nowrap 
+                       bottom-[calc(100%+4px)] group-hover:bottom-[calc(100%+16px)] px-2 py-1 rounded 
+                       text-center left-1/2 -translate-x-1/2 pointer-events-none transition-all 
+                       duration-700 ease-in-out opacity-0 group-hover:opacity-100 invisible 
+                       group-hover:visible border-2 border-[#24273a] "
+      >
+        در مرحله نهایی
+      </span>
+      <TbApi className="h-5.5 w-5.5 text-teal" />
+    </section>
+  ),
 } as const;
 
 const pageFeatures = [
   {
     title: "خانه",
-    status: FeatureStatus.PENDING,
+    status: FeatureStatus.API,
   },
   {
     title: "درباره ما : لندینگ پیج CS12",
