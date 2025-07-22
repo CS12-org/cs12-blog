@@ -27,7 +27,7 @@
     "tailwindcss-animated": "^2.0.0",
     "tailwindcss-react-aria-components": "^2.0.0",
     "vazirmatn": "^33.0.3",
-    "zod": "^3.25.56"
+    "zod": "^4.0.5"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.1.2",
