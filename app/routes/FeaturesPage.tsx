@@ -105,7 +105,7 @@ const pageFeatures = [
   },
   {
     title: "ارور پیج",
-    status: FeatureStatus.PENDING,
+    status: FeatureStatus.COMPLETED,
   },
   {
     title: "سکشن چالش های هفتگی : در ورژن بعدی",
@@ -166,7 +166,7 @@ export const meta: Route.MetaFunction = () => {
 
 function Features() {
   return (
-    <main className="flex flex-col gap-y-3.5 text-body-xs lg:text-body-md">
+    <section className="flex flex-col gap-y-3.5 text-body-xs lg:text-body-md">
       <section className="text-white w-full h-auto bg-crust rounded-xl px-7.5 py-4 flex flex-col content-center gap-y-2.5">
         <h2 className="text-headline-sm lg:text-headline-lg">
           داستان این صفحه چیه؟
@@ -222,7 +222,7 @@ function Features() {
           </li>
         ))}
       </ul>
-    </main>
+    </section>
   );
 }
 export default Features;
