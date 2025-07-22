@@ -67,6 +67,7 @@ function MainTopbar(props: Props) {
 
       <span className="blur-xs">
         <Button
+          aria-label="Button : Categories"
           variant="none"
           onPress={() => onMobileSidebarChange((prev) => !prev)}
           className={twMerge(
@@ -74,13 +75,21 @@ function MainTopbar(props: Props) {
             mobileSidebarOpen && "!bg-sapphire !text-crust",
           )}
         >
-          <FaBook size={16} />
+          <FaBook size={16} aria-hidden="true" />
         </Button>
-        <Button variant="none" className="p-3 rounded-lg cursor-default">
-          <FaMagnifyingGlass size={16} />
+        <Button
+          variant="none"
+          className="p-3 rounded-lg cursor-default"
+          aria-label="Button : Search"
+        >
+          <FaMagnifyingGlass size={16} aria-hidden="true" />
         </Button>
-        <Button variant="none" className="p-3 rounded-lg cursor-default">
-          <FaArrowRightToBracket size={16} />
+        <Button
+          variant="none"
+          className="p-3 rounded-lg cursor-default"
+          aria-label="Button : Login or Signup"
+        >
+          <FaArrowRightToBracket size={16} aria-hidden="true" />
         </Button>
       </span>
       <span className="blur-xs select-none">
