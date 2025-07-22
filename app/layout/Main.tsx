@@ -14,10 +14,10 @@ function Main() {
           mobileSidebarOpen={mobileSidebarOpen}
           onMobileSidebarChange={setMobileSidebarOpen}
         />
-        {/* من اینا رو کامنت کردم چون باعث بودن دوتا مین و همینطور یک ناو اضافی در صفحه فیچر بود! : farhan  */}
         <main>
           <Outlet />
         </main>
+        {/* من این رو کامنت کردم چون باعث وجود یک ناو توی صفحات دیگه میشد.: farhan  */}
         {/* <MainBottombar /> */}
         <MainFooter />
       </div>

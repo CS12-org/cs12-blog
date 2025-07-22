@@ -13,9 +13,10 @@ enum FeatureStatus {
 
 const FeatureStatusIcon = {
   [FeatureStatus.COMPLETED]: (
-    <section
+    <div
+      role="tooltip"
       className="relative group inline-flex items-center"
-      aria-label="Feature: تکمیل شده"
+      aria-label="ویژگی : تکمیل شده"
     >
       <span
         className="absolute max-w-[100px] bg-[#101120] text-[10px] font-semibold whitespace-nowrap 
@@ -27,12 +28,13 @@ const FeatureStatusIcon = {
         ساخته شده
       </span>
       <Check className="ml-[-1px]" aria-hidden="true" />
-    </section>
+    </div>
   ),
   [FeatureStatus.PENDING]: (
-    <section
+    <div
+      role="tooltip"
       className="relative group inline-flex items-center"
-      aria-label="Feature: در حال انجام"
+      aria-label="ویژگی: در حال انجام"
     >
       <span
         className="absolute max-w-[100px] bg-[#101120] text-[10px] font-semibold whitespace-nowrap 
@@ -44,12 +46,13 @@ const FeatureStatusIcon = {
         در حال انجام
       </span>
       <FaRegClock className="h-5.5 w-5.5 text-yellow" aria-hidden="true" />
-    </section>
+    </div>
   ),
   [FeatureStatus.NOT_YET]: (
-    <section
+    <div
+      role="tooltip"
       className="relative group inline-flex items-center"
-      aria-label="Feature: هنوز شروع نشده"
+      aria-label="ویژگی: هنوز شروع نشده"
     >
       <span
         className="absolute max-w-[100px] bg-[#101120] text-[10px] font-semibold whitespace-nowrap 
@@ -61,12 +64,13 @@ const FeatureStatusIcon = {
         هنوز شروع نشده
       </span>
       <Dottcircle className="ml-[-3px]" aria-hidden="true" />
-    </section>
+    </div>
   ),
   [FeatureStatus.API]: (
-    <section
+    <div
+      role="tooltip"
       className="relative group inline-flex items-center"
-      aria-label="Feature: در مرحله نهایی"
+      aria-label="ویژگی: در مرحله نهایی"
     >
       <span
         className="absolute max-w-[100px] bg-[#101120] text-[10px] font-semibold whitespace-nowrap 
@@ -78,7 +82,7 @@ const FeatureStatusIcon = {
         در مرحله نهایی
       </span>
       <TbApi className="h-5.5 w-5.5 text-teal" aria-hidden="true" />
-    </section>
+    </div>
   ),
 } as const;
 

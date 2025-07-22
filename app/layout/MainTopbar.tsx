@@ -67,7 +67,7 @@ function MainTopbar(props: Props) {
 
       <span className="blur-xs">
         <Button
-          aria-label="Button : Categories"
+          aria-label="دکمه : کتگوری ها"
           variant="none"
           onPress={() => onMobileSidebarChange((prev) => !prev)}
           className={twMerge(
@@ -80,14 +80,14 @@ function MainTopbar(props: Props) {
         <Button
           variant="none"
           className="p-3 rounded-lg cursor-default"
-          aria-label="Button : Search"
+          aria-label="دکمه : سرچ"
         >
           <FaMagnifyingGlass size={16} aria-hidden="true" />
         </Button>
         <Button
           variant="none"
           className="p-3 rounded-lg cursor-default"
-          aria-label="Button : Login or Signup"
+          aria-label="دکمه : ورود یا ثبت نام"
         >
           <FaArrowRightToBracket size={16} aria-hidden="true" />
         </Button>
