@@ -1,4 +1,5 @@
-import { useState, type Dispatch, type SetStateAction } from "react";
+import { type Dispatch, type SetStateAction, useState } from "react";
+import { Input, TextField } from "react-aria-components";
 import {
   FaArrowRightToBracket,
   FaBook,
@@ -10,7 +11,6 @@ import Logo from "~/assets/images/cs12-logo.svg?react";
 import Button from "~/components/Button";
 import twMerge from "~/lib/tw-merge";
 import MainThemeSwitch from "./MainThemeSwitch";
-import { Input } from "react-aria-components";
 
 type Props = {
   mobileSidebarOpen: boolean;
@@ -21,6 +21,7 @@ type Props = {
 function MainTopbar(props: Props) {
   const { onMobileSidebarChange, mobileSidebarOpen, isBlured = false } = props;
   const [focused, setFocused] = useState(false);
+
   return (
     <header
       className={twJoin(
@@ -29,20 +30,13 @@ function MainTopbar(props: Props) {
         "gap-3.5 [&>*]:shrink-0 lg:px-7.5",
         "relative z-11 select-none",
       )}
-      style={{
-        WebkitUserSelect: "none",
-        userSelect: "none",
-        WebkitUserDrag: "none",
-      } as any}
     >
-   
       <Logo />
 
- 
       <div
         className={twJoin(
           "flex items-center grow gap-3.5",
-          isBlured && "blur-[4px] pointer-events-none"
+          isBlured && "blur-[4px] pointer-events-none",
         )}
       >
         <nav className="hidden text-body-sm mr-3.5 lg:block">
@@ -77,28 +71,31 @@ function MainTopbar(props: Props) {
             variant="none"
             onPress={() => onMobileSidebarChange((prev) => !prev)}
             className={twMerge(
-              "p-3 rounded-lg lg:hidden ",
-              mobileSidebarOpen && "!bg-sapphire !text-crust"
+              "p-3 rounded-lg lg:hidden",
+              mobileSidebarOpen && "bg-sapphire text-crust",
             )}
           >
             <FaBook size={16} />
           </Button>
-      <div className="relative w-10 h-10">
-  <Input
-    aria-label="سرچ بار"
-      placeholder={focused ? "جست‌وجو کنید" : ""}
-        onFocus={() => setFocused(true)}
-            onBlur={() => setFocused(false)}  
-    className="w-10 h-10 rounded-lg bg-base absolute left-0 focus:p-2.5 placeholder:text-xs text-xs placeholder:text-text focus:outline-none focus:w-[245px]  lg:focus:w-[660px] transition-all duration-200 ease-in-out cursor-pointer"
-  />
-  <FaMagnifyingGlass
-    size={16}
-    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer "
-  />
-</div>
+          <TextField className="relative w-10 h-10">
+            <Input
+              aria-label="سرچ بار"
+              onBlur={() => setFocused(false)}
+              onFocus={() => setFocused(true)}
+              placeholder={focused ? "جستوجو کنید" : ""}
+              className="w-10 h-10 rounded-lg bg-base absolute left-0 focus:p-2.5 placeholder:text-xs text-xs placeholder:text-text focus:outline-none focus:w-[245px]  lg:focus:w-[660px] transition-all duration-200 ease-in-out cursor-pointer"
+            />
+            <FaMagnifyingGlass
+              size={16}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer pointer-events-none"
+            />
+          </TextField>
 
-     
-          <Button variant="none" aria-label="دکمه ورود" className="p-3 rounded-lg cursor-default bg-base">
+          <Button
+            variant="none"
+            aria-label="دکمه ورود"
+            className="p-3 rounded-lg cursor-default bg-base"
+          >
             <FaArrowRightToBracket size={16} />
           </Button>
         </span>
