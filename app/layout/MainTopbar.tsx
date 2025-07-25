@@ -9,15 +9,14 @@ import { twJoin } from "tailwind-merge";
 import Logo from "~/assets/images/cs12-logo.svg?react";
 import Button from "~/components/Button";
 import twMerge from "~/lib/tw-merge";
+import { useGlobalStore } from "~/store/StoreProvider";
 import MainThemeSwitch from "./MainThemeSwitch";
 
-type Props = {
-  mobileSidebarOpen: boolean;
-  onMobileSidebarChange: Dispatch<SetStateAction<boolean>>;
-};
-
-function MainTopbar(props: Props) {
-  const { onMobileSidebarChange, mobileSidebarOpen } = props;
+function MainTopbar() {
+  const sideBarOpen = useGlobalStore((state) => state.isSideBarOpen);
+  const toggleIsSideBarOpen = useGlobalStore(
+    (state) => state.toggleIsSideBarOpen,
+  );
 
   return (
     <header
@@ -26,7 +25,7 @@ function MainTopbar(props: Props) {
         "flex items-center px-4 [&>button]:bg-base",
         "gap-3.5 [&>*]:shrink-0 lg:px-7.5",
         "[&>button]:text-overlay-1 relative",
-        "z-11 select-none pointer-events-none",
+        "z-11 ",
       )}
       style={
         {
@@ -65,13 +64,13 @@ function MainTopbar(props: Props) {
 
       <div aria-hidden className="grow" />
 
-      <span className="blur-xs">
+      <span className="">
         <Button
           variant="none"
-          onPress={() => onMobileSidebarChange((prev) => !prev)}
+          onPress={() => toggleIsSideBarOpen()}
           className={twMerge(
             "p-3 rounded-lg lg:hidden select-none ",
-            mobileSidebarOpen && "!bg-sapphire !text-crust",
+            sideBarOpen && "bg-sapphire text-crust",
           )}
         >
           <FaBook size={16} />

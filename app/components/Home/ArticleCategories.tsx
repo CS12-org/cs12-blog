@@ -11,11 +11,7 @@ import { Link } from "react-router";
 import { twJoin } from "tailwind-merge";
 import Button from "~/components/Button";
 import twMerge from "~/lib/tw-merge";
-
-type Props = {
-  mobileSidebarOpen: boolean;
-  onMobileSidebarChange: Dispatch<SetStateAction<boolean>>;
-};
+import { useGlobalStore } from "~/store/StoreProvider";
 
 const groups = [
   {
@@ -30,8 +26,11 @@ const groups = [
   },
 ];
 
-function ArticleCategories(props: Props) {
-  const { onMobileSidebarChange, mobileSidebarOpen } = props;
+function ArticleCategories() {
+  const sideBarOpen = useGlobalStore((state) => state.isSideBarOpen);
+  const toggleIsSideBarOpen = useGlobalStore(
+    (state) => state.toggleIsSideBarOpen,
+  );
 
   const headingId = useId();
   const [collapsed, setCollapsed] = useState(false);
@@ -79,7 +78,7 @@ function ArticleCategories(props: Props) {
 
         <Button
           variant="none"
-          onPress={() => onMobileSidebarChange(false)}
+          onPress={() => toggleIsSideBarOpen()}
           className={twMerge(
             "bg-base p-1.5 rounded-lg mr-auto shrink-0",
             "block lg:hidden",
@@ -128,7 +127,7 @@ function ArticleCategories(props: Props) {
   return (
     <>
       <AnimatePresence initial={false}>
-        {mobileSidebarOpen && (
+        {sideBarOpen && (
           <motion.div
             aria-hidden
             exit={{ opacity: 0 }}
@@ -152,7 +151,7 @@ function ArticleCategories(props: Props) {
       </aside>
 
       <AnimatePresence initial={false}>
-        {mobileSidebarOpen && (
+        {sideBarOpen && (
           <motion.aside
             aria-labelledby={headingId}
             animate={{ opacity: 1, translateY: 0 }}
