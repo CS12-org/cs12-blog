@@ -4,8 +4,9 @@ import MainBottombar from "./MainBottombar";
 import MainFooter from "./MainFooter";
 import MainTopbar from "./MainTopbar";
 
-function Main(props: any) {
+function Main() {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+
   return (
     <div className="px-6">
       <div className="max-w-sm lg:max-w-235 mx-auto space-y-5 pb-5">
@@ -13,7 +14,9 @@ function Main(props: any) {
           mobileSidebarOpen={mobileSidebarOpen}
           onMobileSidebarChange={setMobileSidebarOpen}
         />
-        <main>{props.children ? props.children : <Outlet />}</main>
+        <main>
+          <Outlet />
+        </main>
         <MainBottombar />
         <MainFooter />
       </div>
@@ -21,4 +24,4 @@ function Main(props: any) {
   );
 }
 
-export { Main };
+export default Main;

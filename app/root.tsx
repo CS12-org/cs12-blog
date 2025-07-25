@@ -9,11 +9,8 @@ import {
 } from "react-router";
 import TailwindCss from "~/assets/styles/main.css?url";
 import session from "./.server/session";
-
-import type { Route } from "./+types/root";
-import { Main } from "./layout/Main";
-import NotFoundPage from "./routes/NotFoundPage";
 import { GlobalStoreProvider } from "./store/StoreProvider";
+import type { Route } from "./+types/root";
 
 export async function loader(args: Route.LoaderArgs) {
   const { request } = args;
@@ -72,11 +69,6 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
       error.status === 404
         ? "The requested page could not be found."
         : error.statusText || details;
-    return (
-      <Main>
-        <NotFoundPage />
-      </Main>
-    );
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;
     stack = error.stack;
