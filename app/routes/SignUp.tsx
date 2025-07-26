@@ -1,14 +1,62 @@
-import { useNavigate } from "react-router";
+import { AxiosError } from "axios";
+import { Input, TextField } from "react-aria-components";
+import { data, Form, redirect, useNavigate } from "react-router";
 import { twJoin } from "tailwind-merge";
+import { ZodError, z } from "zod";
 import FarhanCharacter from "~/assets/images/FR.svg?url";
 import Button from "~/components/Button";
+import { authenticator, sessionStorage, signup } from "~/service/auth.server";
+import type { Route } from "./+types/SignUp";
+
+const SignupSchema = z.object({
+  email: z.string().min(1).email(),
+  password: z.string().min(8),
+});
+
+export async function action(args: Route.ActionArgs) {
+  const { request } = args;
+  const headers = request.headers.get("cookie");
+
+  try {
+    const user = authenticator.authenticate("user-pass", request);
+    const session = await sessionStorage.getSession(headers);
+
+    session.set("user", user);
+
+    return redirect("/", {
+      headers: { "Set-Cookie": await sessionStorage.commitSession(session) },
+    });
+  } catch (error: unknown) {
+    console.log(error);
+    let res: null | object = null;
+    if (error instanceof ZodError) res = error;
+    if (error instanceof AxiosError) res = error.response?.data;
+    return data(res, {
+      status: 400,
+      statusText: "Bad Request",
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+}
+
+export async function loader(args: Route.LoaderArgs) {
+  const { request } = args;
+  const headers = request.headers.get("cookie");
+  const session = await sessionStorage.getSession(headers);
+  const user = session.get("user");
+  if (user) return redirect("/dashboard");
+  return data(null);
+}
 
 function SignUp() {
   const navigate = useNavigate();
 
   return (
     <main className="min-h-dvh flex flex-col items-center">
-      <form className="relative flex flex-col items-stretch my-auto bg-crust rounded-2xl p-5 w-full max-w-sm">
+      <Form
+        method="POST"
+        className="relative flex flex-col items-stretch my-auto bg-crust rounded-2xl p-5 w-full max-w-sm"
+      >
         <img
           src={FarhanCharacter}
           alt="animated character"
@@ -27,21 +75,32 @@ function SignUp() {
           <span className="text-mauve animate-fade animate-delay-500">م</span>
         </h1>
 
-        <input
-          placeholder="ایمیل"
-          autoComplete="username"
-          className="bg-surface-0 mb-4 rounded-md px-2.5 py-2"
-        />
-        <input
-          placeholder="رمز عبور"
-          autoComplete="new-password"
-          className="bg-surface-0 mb-4 rounded-md px-2.5 py-2"
-        />
-        <input
-          autoComplete="new-password"
-          placeholder="تکرار رمز عبور"
-          className="bg-surface-0 mb-4 rounded-md px-2.5 py-2"
-        />
+        <TextField>
+          <Input
+            name="email"
+            placeholder="ایمیل"
+            autoComplete="username"
+            className="bg-surface-0 mb-4 rounded-md px-2.5 py-2 w-full"
+          />
+        </TextField>
+
+        <TextField>
+          <Input
+            name="password"
+            placeholder="رمز عبور"
+            autoComplete="new-password"
+            className="bg-surface-0 mb-4 rounded-md px-2.5 py-2 w-full"
+          />
+        </TextField>
+
+        <TextField>
+          <Input
+            name="confirmPassword"
+            autoComplete="new-password"
+            placeholder="تکرار رمز عبور"
+            className="bg-surface-0 mb-4 rounded-md px-2.5 py-2 w-full"
+          />
+        </TextField>
 
         <div className="mt-4 flex gap-2">
           <Button type="submit" className="py-2 grow">
@@ -56,7 +115,7 @@ function SignUp() {
             ورود
           </Button>
         </div>
-      </form>
+      </Form>
     </main>
   );
 }
