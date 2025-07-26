@@ -17,7 +17,8 @@ function Tooltip(props: TooltipProps) {
   const classes = twMerge(
     "max-w-[100px] bg-[#101120] text-[10px] font-semibold whitespace-nowrap",
     "px-2 py-1 rounded text-center transition-all duration-700 ease-in-out",
-    "border-2 border-[#24273a]",
+    "border-2 border-[#24273a] entering:translate-y-4 entering:opacity-0",
+    "exiting:opacity-0",
     className,
   );
 

@@ -16,7 +16,7 @@ enum FeatureStatus {
 const FeatureStatusIcon = {
   [FeatureStatus.COMPLETED]: (
     <TooltipTrigger delay={0}>
-      <Tooltip>ساخته شده</Tooltip>
+      <Tooltip offset={16}>ساخته شده</Tooltip>
       <Focusable>
         <Check className="ml-[-1px]" aria-hidden="true" />
       </Focusable>
@@ -24,7 +24,7 @@ const FeatureStatusIcon = {
   ),
   [FeatureStatus.PENDING]: (
     <TooltipTrigger delay={0}>
-      <Tooltip>در حال انجام</Tooltip>
+      <Tooltip offset={16}>در حال انجام</Tooltip>
       <Focusable>
         <FaRegClock className="h-5.5 w-5.5 text-yellow" aria-hidden="true" />
       </Focusable>
@@ -32,7 +32,7 @@ const FeatureStatusIcon = {
   ),
   [FeatureStatus.NOT_YET]: (
     <TooltipTrigger delay={0}>
-      <Tooltip>هنوز شروع نشده</Tooltip>
+      <Tooltip offset={16}>هنوز شروع نشده</Tooltip>
       <Focusable>
         <Dottcircle className="ml-[-3px]" aria-hidden="true" />
       </Focusable>
@@ -40,10 +40,10 @@ const FeatureStatusIcon = {
   ),
   [FeatureStatus.API]: (
     <TooltipTrigger delay={0}>
-      <Tooltip>در مرحله نهایی</Tooltip>
-      <Tooltip>
+      <Tooltip offset={16}>در مرحله نهایی</Tooltip>
+      <Focusable>
         <TbApi className="h-5.5 w-5.5 text-teal" aria-hidden="true" />
-      </Tooltip>
+      </Focusable>
     </TooltipTrigger>
   ),
 } as const;
