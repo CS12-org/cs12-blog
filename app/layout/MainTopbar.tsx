@@ -4,7 +4,7 @@ import {
   FaBook,
   FaMagnifyingGlass,
 } from "react-icons/fa6";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { twJoin } from "tailwind-merge";
 import Logo from "~/assets/images/cs12-logo.svg?react";
 import Button from "~/components/Button";
@@ -16,6 +16,13 @@ function MainTopbar() {
   const sideBarOpen = useGlobalStore((state) => state.isSideBarOpen);
   const toggleIsSideBarOpen = useGlobalStore(
     (state) => state.toggleIsSideBarOpen,
+  );
+
+  const location = useLocation();
+  const pathname = location.pathname;
+
+  const matchedIcon = useGlobalStore((state) =>
+    state.getSidebarIconByPath(pathname),
   );
 
   return (
@@ -65,16 +72,18 @@ function MainTopbar() {
       <div aria-hidden className="grow" />
 
       <span className="">
-        <Button
-          variant="none"
-          onPress={() => toggleIsSideBarOpen()}
-          className={twMerge(
-            "p-3 rounded-lg lg:hidden select-none ",
-            sideBarOpen && "bg-sapphire text-crust",
-          )}
-        >
-          <FaBook size={16} />
-        </Button>
+        {matchedIcon && (
+          <Button
+            variant="none"
+            onPress={() => toggleIsSideBarOpen()}
+            className={twMerge(
+              "p-3 rounded-lg lg:hidden select-none ",
+              sideBarOpen && "bg-sapphire text-crust",
+            )}
+          >
+            {matchedIcon}
+          </Button>
+        )}
         <Button variant="none" className="p-3 rounded-lg cursor-default">
           <FaMagnifyingGlass size={16} />
         </Button>
