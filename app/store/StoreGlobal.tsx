@@ -18,8 +18,8 @@ export const createGlobalStore = () => {
   return createStore<GlobalStore>()((set, get) => ({
     isSideBarOpen: false,
     mobileSidebarIcons: {
-      "/user-panel": <FaBook size={16} />,
-      "/": <FaBars size={16} />,
+      "/user-panel": <FaBars size={16} />,
+      "/": <FaBook size={16} />,
     },
 
     toggleIsSideBarOpen: () =>
