@@ -1,4 +1,4 @@
-import { createCookieSessionStorage } from "react-router";
+import { createCookieSessionStorage, redirect } from "react-router";
 import { Authenticator } from "remix-auth";
 import { FormStrategy } from "remix-auth-form";
 import axios from "~/lib/axios";
@@ -11,7 +11,7 @@ type User = {
   email: string;
 };
 
-type RegisterResponse = {
+type AuthenticateResponse = {
   jwt: string;
   user: {
     id: number;
@@ -44,8 +44,8 @@ export const sessionStorage = createCookieSessionStorage({
 
 export const authenticator = new Authenticator<User>();
 
-export async function signup(options: SignupOptions): Promise<User> {
-  const res = await axios.post<RegisterResponse>("/auth/local/register", {
+async function signup(options: SignupOptions): Promise<User> {
+  const res = await axios.post<AuthenticateResponse>("/auth/local/register", {
     email: options.email,
     username: options.username,
     password: options.password,
@@ -59,16 +59,46 @@ export async function signup(options: SignupOptions): Promise<User> {
   };
 }
 
-async function login(email: string, password: string): Promise<User> {
-  return { email, id: 0, name: "", jwt: "" };
+async function login(identifier: string, password: string): Promise<User> {
+  const res = await axios.post<AuthenticateResponse>("/auth/local", {
+    identifier,
+    password,
+  });
+
+  return {
+    email: res.data.user.email,
+    id: res.data.user.id,
+    name: res.data.user.username,
+    jwt: res.data.jwt,
+  };
 }
+
+authenticator.use(
+  new FormStrategy(async ({ form }) => {
+    const password = form.get("password") as string;
+    const identifier = form.get("identifier") as string;
+    if (!identifier || !password)
+      throw new Error("Email and password are required");
+    return await login(identifier, password);
+  }),
+  "user-pass-login",
+);
 
 authenticator.use(
   new FormStrategy(async ({ form }) => {
     const email = form.get("email") as string;
     const password = form.get("password") as string;
     if (!email || !password) throw new Error("Email and password are required");
-    return await login(email, password);
+    return await signup({ email, password, username: email.split("@")[0] });
   }),
-  "user-pass",
+  "user-pass-signup",
 );
+
+export async function authenticate(request: Request, navigate: boolean = true) {
+  const cookies = request.headers.get("cookie");
+  const session = await sessionStorage.getSession(cookies);
+  const user = session.get("user") as User;
+  if (user) return user;
+  if (navigate) throw redirect("/login");
+  return null;
+}

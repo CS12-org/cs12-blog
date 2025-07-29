@@ -1,38 +1,56 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Input, Label, TextField } from "react-aria-components";
+import { AxiosError } from "axios";
+import { Input, Label, Text, TextField } from "react-aria-components";
 import { Controller, useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router";
+import {
+  data,
+  Link,
+  redirect,
+  useActionData,
+  useNavigate,
+  useSubmit,
+} from "react-router";
 import { twJoin } from "tailwind-merge";
 import { z } from "zod";
 import SamanCharacter from "~/assets/images/SM.svg?url";
 import Button from "~/components/Button";
+import {
+  authenticate,
+  authenticator,
+  sessionStorage,
+} from "~/service/auth.server";
+import type { Route } from "./+types/Login";
 
 type FormFields = z.infer<typeof schema>;
 
 const schema = z.object({
-  username: z.string().min(1),
   password: z.string().min(8),
+  identifier: z.string().min(1),
 });
 
+const DEFAULT_ERROR_MESSAGE =
+  "متأسفانه، یک خطای غیرمنتظره رخ داده است. لطفا دوباره تلاش کنید.";
+
 function Login() {
+  const submit = useSubmit();
   const navigate = useNavigate();
+  const error = useActionData<typeof action>();
 
   const { control, handleSubmit } = useForm<FormFields>({
     resolver: zodResolver(schema),
     defaultValues: {
       password: "",
-      username: "",
+      identifier: "",
     },
   });
 
-  const submitHandler = handleSubmit((values) => {
-    console.log(values);
+  const submitHandler = handleSubmit((_, event) => {
+    if (event) submit(event.target, { method: "POST" });
   });
 
   return (
-    <main className="min-h-dvh flex flex-col items-center">
+    <main className="min-h-dvh flex flex-col items-center px-6">
       <form
-        autoComplete="off"
         onSubmit={submitHandler}
         className="relative flex flex-col items-stretch my-auto bg-crust rounded-2xl p-5 w-full max-w-sm"
       >
@@ -57,16 +75,18 @@ function Login() {
         </h1>
 
         <Controller
-          name="username"
+          name="identifier"
           control={control}
-          render={({ field }) => (
+          render={({ field, fieldState }) => (
             <TextField
               className="mb-4"
               name={field.name}
               value={field.value}
               onBlur={field.onBlur}
+              autoComplete="username"
               onChange={field.onChange}
               isDisabled={field.disabled}
+              isInvalid={fieldState.invalid}
             >
               <Label className="hidden">نام کاربری یا ایمیل</Label>
               <Input
@@ -74,6 +94,15 @@ function Login() {
                 placeholder="نام کاربری یا ایمیل"
                 className="bg-surface-0 rounded-md px-2.5 py-2 w-full"
               />
+              <Text
+                slot="description"
+                className={twJoin(
+                  "text-red block text-label-xs",
+                  fieldState.error && "mt-2",
+                )}
+              >
+                {fieldState.error?.message}
+              </Text>
             </TextField>
           )}
         />
@@ -81,7 +110,7 @@ function Login() {
         <Controller
           name="password"
           control={control}
-          render={({ field }) => (
+          render={({ field, fieldState }) => (
             <TextField
               className="mb-4"
               name={field.name}
@@ -89,6 +118,8 @@ function Login() {
               onBlur={field.onBlur}
               onChange={field.onChange}
               isDisabled={field.disabled}
+              isInvalid={fieldState.invalid}
+              autoComplete="current-password"
             >
               <Label className="hidden">رمز عبور</Label>
               <Input
@@ -96,9 +127,24 @@ function Login() {
                 placeholder="رمز عبور"
                 className="bg-surface-0 rounded-md px-2.5 py-2 w-full"
               />
+              <Text
+                slot="description"
+                className={twJoin(
+                  "text-red block text-label-xs",
+                  fieldState.error && "mt-2",
+                )}
+              >
+                {fieldState.error?.message}
+              </Text>
             </TextField>
           )}
         />
+
+        {!!error && (
+          <p className="text-center text-label-md text-red my-1">
+            {error.trim()}
+          </p>
+        )}
 
         <Link
           rel="nofollow"
@@ -124,6 +170,43 @@ function Login() {
       </form>
     </main>
   );
+}
+
+export async function action(args: Route.ActionArgs) {
+  const { request } = args;
+  const headers = request.headers.get("cookie");
+
+  try {
+    const user = await authenticator.authenticate("user-pass-login", request);
+    const session = await sessionStorage.getSession(headers);
+
+    session.set("user", user);
+
+    return redirect("/", {
+      headers: {
+        "Set-Cookie": await sessionStorage.commitSession(session),
+      },
+    });
+  } catch (error: unknown) {
+    let res: string = DEFAULT_ERROR_MESSAGE;
+
+    if (error instanceof AxiosError) {
+      res = error.response?.data?.error?.message || DEFAULT_ERROR_MESSAGE;
+    } else if (error instanceof Error) {
+      res = error.message;
+    }
+
+    return data(res, {
+      status: 400,
+      statusText: "Bad Request",
+    });
+  }
+}
+
+export async function loader(args: Route.LoaderArgs) {
+  const user = await authenticate(args.request, false);
+  if (user) return redirect("/");
+  return null;
 }
 
 export default Login;
