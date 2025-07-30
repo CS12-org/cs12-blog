@@ -3,7 +3,10 @@ import { Text } from "react-aria-components";
 import { FormProvider, useForm } from "react-hook-form";
 import PlusSign from "~/assets/images/plus-sign.svg?react";
 import Button from "~/components/Button";
-import { SettingCheckboxOption } from "~/components/UserPanel/SettingCheckbox";
+import {
+  SettingCheckboxGroup,
+  SettingCheckboxOption,
+} from "~/components/UserPanel/SettingCheckbox";
 import { TextInput } from "~/components/UserPanel/TextFeild";
 import MyRadioGroup from "~/components/UserPanel/ThemeSetting";
 import UserPanelList from "~/components/UserPanel/UserPanelList";
@@ -150,7 +153,10 @@ function UserPanel() {
 
             <section>
               <h2 className="font-extrabold text-xl">تنظیمات</h2>
-              <fieldset className="bg-crust rounded-xl p-2 w-full flex flex-col gap-y-2.5">
+              <SettingCheckboxGroup
+                name="تنظیمات"
+                className="bg-crust rounded-xl p-2 w-full flex flex-col gap-y-2.5"
+              >
                 <SettingCheckboxOption value="sss">
                   آیا ۱۰ تا از آخرین نظراتتون در صفحه پروفایلتون توسط دیگران
                   دیده شود؟
@@ -176,7 +182,7 @@ function UserPanel() {
                 <SettingCheckboxOption value="sss6">
                   آیا صفحه پروفایل برای شما ساخته شود؟
                 </SettingCheckboxOption>
-              </fieldset>
+              </SettingCheckboxGroup>
             </section>
 
             <section>

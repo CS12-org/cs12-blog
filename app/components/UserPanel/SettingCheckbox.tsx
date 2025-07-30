@@ -10,9 +10,11 @@ import {
   Label,
   Text,
 } from "react-aria-components";
+import { Controller, useFormContext } from "react-hook-form";
 
 interface SettingCheckboxGroupProps
-  extends Omit<CheckboxGroupProps, "children"> {
+  extends Omit<CheckboxGroupProps, "children" | "value" | "onChange"> {
+  name: string;
   children?: React.ReactNode;
   label?: string;
   description?: string;
@@ -20,19 +22,28 @@ interface SettingCheckboxGroupProps
 }
 
 export function SettingCheckboxGroup({
+  name,
   label,
   description,
   errorMessage,
   children,
   ...props
 }: SettingCheckboxGroupProps) {
+  const { control } = useFormContext();
+
   return (
-    <CheckboxGroup {...props}>
-      {label && <Label>{label}</Label>}
-      {children}
-      {description && <Text slot="description">{description}</Text>}
-      <FieldError>{errorMessage}</FieldError>
-    </CheckboxGroup>
+    <Controller
+      name={name}
+      control={control}
+      render={({ field, fieldState }) => (
+        <CheckboxGroup {...props} value={field.value} onChange={field.onChange}>
+          {label && <Label>{label}</Label>}
+          {children}
+          {description && <Text slot="description">{description}</Text>}
+          <FieldError>{errorMessage || fieldState.error?.message}</FieldError>
+        </CheckboxGroup>
+      )}
+    />
   );
 }
 
