@@ -1,20 +1,41 @@
-import { TextField, Label, Input } from "react-aria-components";
+import {
+  FieldError,
+  Input,
+  type InputProps,
+  Label,
+  TextField,
+} from "react-aria-components";
+import { Controller, useFormContext } from "react-hook-form";
 
 type Props = {
   label?: string;
-  name?: string;
+  name: string;
   placeholder?: string;
   className?: string;
-};
+} & Omit<InputProps, "children">;
 
-export function TextInput({ label, name, placeholder, className = "" }: Props) {
+export function TextInput({
+  label,
+  name,
+  placeholder,
+  className = "",
+  ...inputProps
+}: Props) {
+  const { control } = useFormContext();
+
   return (
-    <TextField name={name} className="flex flex-col gap-1 w-full">
-      <Label className="text-sm font-medium">{label}</Label>
-      <Input
-        placeholder={placeholder}
-        className={`bg-mantle p-2 w-full rounded-md h-9 text-xs focus:outline-none focus:ring-1 focus:ring-lavender ${className}`}
-      />
-    </TextField>
+    <Controller
+      control={control}
+      name={name}
+      render={({ field, fieldState }) => (
+        <TextField className={className}>
+          {label && <Label>{label}</Label>}
+          <Input {...field} placeholder={placeholder} {...inputProps} />
+          {fieldState.error && (
+            <FieldError>{fieldState.error.message}</FieldError>
+          )}
+        </TextField>
+      )}
+    />
   );
 }

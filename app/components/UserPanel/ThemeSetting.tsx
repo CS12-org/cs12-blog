@@ -1,4 +1,5 @@
-import { RadioGroup, Radio, type RadioGroupProps } from "react-aria-components";
+import { Radio, RadioGroup, type RadioGroupProps } from "react-aria-components";
+import { Controller, useFormContext } from "react-hook-form";
 
 interface ColorOption {
   label: string;
@@ -8,17 +9,31 @@ interface ColorOption {
 
 interface ColorRadioGroupProps extends Omit<RadioGroupProps, "children"> {
   options: ColorOption[];
+  name: string;
+  label: string;
+  description: string;
 }
 
-function MyRadioGroup({ options, ...props }: ColorRadioGroupProps) {
+function MyRadioGroup({ name, options, ...props }: ColorRadioGroupProps) {
+  const { control } = useFormContext();
+
   return (
-    <RadioGroup {...props} className="flex flex-wrap gap-2.5 ">
-      {options.map((opt) => {
-        return (
-          <Radio
-            key={opt.value}
-            value={opt.value}
-            className={`
+    <Controller
+      name={name}
+      control={control}
+      render={({ field }) => (
+        <RadioGroup
+          {...props}
+          value={field.value}
+          onChange={field.onChange}
+          className="flex flex-wrap gap-2.5 "
+        >
+          {options.map((opt) => {
+            return (
+              <Radio
+                key={opt.value}
+                value={opt.value}
+                className={`
   group flex items-center bg-mantle rounded-md border-2 border-transparent transition-all duration-200 cursor-pointer
   ${opt.value === "lavender" ? "selected:border-lavender" : ""}
   ${opt.value === "maroon" ? "selected:border-maroon" : ""}
@@ -29,15 +44,17 @@ function MyRadioGroup({ options, ...props }: ColorRadioGroupProps) {
   ${opt.value === "pink" ? "selected:border-pink" : ""}
   ${opt.value === "flamingo" ? "selected:border-flamingo" : ""}
 `}
-          >
-            <div
-              className={`h-3 w-3 m-2.5 rounded-bl rounded-tr ${opt.bgColorClass}`}
-            />
-            <span className="m-2.5 text-xs text-text">{opt.label}</span>
-          </Radio>
-        );
-      })}
-    </RadioGroup>
+              >
+                <div
+                  className={`h-3 w-3 m-2.5 rounded-bl rounded-tr ${opt.bgColorClass}`}
+                />
+                <span className="m-2.5 text-xs text-text">{opt.label}</span>
+              </Radio>
+            );
+          })}
+        </RadioGroup>
+      )}
+    />
   );
 }
 
