@@ -9,8 +9,8 @@ import {
 } from "react-router";
 import TailwindCss from "~/assets/styles/main.css?url";
 import session from "./.server/session";
-import { GlobalStoreProvider } from "./store/StoreProvider";
 import type { Route } from "./+types/root";
+import { GlobalStoreProvider } from "./store/StoreProvider";
 
 export async function loader(args: Route.LoaderArgs) {
   const { request } = args;

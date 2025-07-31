@@ -1,6 +1,7 @@
-import type { Dispatch, SetStateAction } from "react";
+import type { ReactNode } from "react";
 import {
   FaArrowRightToBracket,
+  FaBars,
   FaBook,
   FaMagnifyingGlass,
 } from "react-icons/fa6";
@@ -12,18 +13,19 @@ import twMerge from "~/lib/tw-merge";
 import { useGlobalStore } from "~/store/StoreProvider";
 import MainThemeSwitch from "./MainThemeSwitch";
 
+const PATH_ICONS: Record<string, ReactNode> = {
+  "/": <FaBook size={16} />,
+  "/user-panel": <FaBars size={16} />,
+};
+
 function MainTopbar() {
   const sideBarOpen = useGlobalStore((state) => state.isSideBarOpen);
   const toggleIsSideBarOpen = useGlobalStore(
     (state) => state.toggleIsSideBarOpen,
   );
 
-  const location = useLocation();
-  const pathname = location.pathname;
-
-  const matchedIcon = useGlobalStore((state) =>
-    state.getSidebarIconByPath(pathname),
-  );
+  const { pathname } = useLocation();
+  const matchedIcon = PATH_ICONS[pathname];
 
   return (
     <header
@@ -34,13 +36,6 @@ function MainTopbar() {
         "[&>button]:text-overlay-1 relative",
         "z-11 ",
       )}
-      style={
-        {
-          WebkitUserSelect: "none",
-          userSelect: "none",
-          ["WebkitUserDrag"]: "none",
-        } as any
-      }
     >
       <Logo />
 

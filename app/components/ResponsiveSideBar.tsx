@@ -1,11 +1,5 @@
 import { AnimatePresence, motion } from "motion/react";
-import {
-  type FunctionComponent,
-  type ReactNode,
-  useEffect,
-  useId,
-  useState,
-} from "react";
+import { type FunctionComponent, useEffect, useId, useState } from "react";
 import { FaAnglesRight, FaX } from "react-icons/fa6";
 import { Link } from "react-router";
 import { twJoin, twMerge } from "tailwind-merge";
@@ -135,7 +129,7 @@ const ResponsiveSideBar = (prop: Props) => {
         aria-labelledby={headingId}
         className={twMerge(
           "p-3 bg-crust w-full rounded-xl",
-          "transition-[width] hidden lg:block max-w-sm max-w-65",
+          "transition-[width] hidden lg:block max-w-65",
           "sticky top-5",
           collapsed && "w-17",
         )}
