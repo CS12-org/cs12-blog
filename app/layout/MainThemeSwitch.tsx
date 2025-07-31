@@ -6,22 +6,23 @@ import type { loader } from "~/root";
 function MainThemeSwitch() {
   const loaderData = useRouteLoaderData<typeof loader>("root");
   const theme = loaderData?.theme ?? "dark";
-
   const submit = useSubmit();
 
   const pressHandler = () => {
-    submit(JSON.stringify({ theme: theme === "dark" ? "light" : "dark" }), {
+    const newTheme = theme === "dark" ? "light" : "dark";
+
+    submit(JSON.stringify({ theme: newTheme }), {
+      method: "POST",
       navigate: false,
       action: "/api/theme",
       encType: "application/json",
-      method: "POST",
     });
   };
 
   return (
     <Button
       variant="none"
-      isDisabled={true}
+      isDisabled={false}
       onPress={pressHandler}
       className="p-3 bg-base rounded-full text-overlay-1"
     >
