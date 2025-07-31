@@ -1,4 +1,4 @@
-import { TextField, Label, Input } from "react-aria-components";
+import { Input, Label, TextField } from "react-aria-components";
 
 type Props = {
   label?: string;
@@ -13,7 +13,7 @@ export function TextInput({ label, name, placeholder, className = "" }: Props) {
       <Label className="text-sm font-medium">{label}</Label>
       <Input
         placeholder={placeholder}
-        className={`bg-mantle p-2 w-full rounded-md h-9 text-xs focus:outline-none focus:ring-1 focus:ring-lavender ${className}`}
+        className={`bg-mantle  rounded-md  text-xs focus:outline-none focus:ring-1 focus:ring-lavender ${className}`}
       />
     </TextField>
   );

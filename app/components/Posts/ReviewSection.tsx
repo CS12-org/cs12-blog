@@ -1,4 +1,5 @@
 import { Button, Text } from "react-aria-components";
+import Anonymous from "~/assets/images/anonymous.svg?react";
 import Close from "~/assets/images/close.svg?react";
 import Comments from "~/assets/images/comments.svg?react";
 import DecreaseArrow from "~/assets/images/decreaseArrow.svg?react";
@@ -9,7 +10,6 @@ import PlusSign from "~/assets/images/plus-sign.svg?react";
 import ThreeDotts from "~/assets/images/threeDotts.svg?react";
 import Profile2 from "~/assets/images/user-profile.png?url";
 import { TextInput } from "../UserPanel/TextFeild";
-
 export default function ReviewSection() {
   return (
     <section className="text-text flex flex-col gap-[10px]">
@@ -63,30 +63,36 @@ export default function ReviewSection() {
         </article>
       </section>
 
-      <section className="text-[14px] bg-crust rounded-[10px] py-[30px] px-[60px]">
+      <section className="text-[14px]  bg-crust rounded-[10px] py-[30px] px-[60px] ">
+        <span className="flex gap-[10px] items-center pb-[5px]">
+          {" "}
+          <Anonymous />
+          <span className="font-bold text-subtext-0">نام فرد</span>
+        </span>
+
         <TextInput
-          className="border-b-[1px] border-surface-0 placeholder:text-text text-text"
+          className="border-b-[1px] !p-[15px] !h-[52px] text-[14px] border-surface-0 placeholder:text-text text-text  "
           name="نقد و نکات"
           placeholder="نقد و نکات تکمیلی را بنویسید"
         />
-        <div>
+        <div className="flex gap-[5px]">
           <Button className="h-[48px] w-[48px] bg-mantle flex justify-center items-center rounded-md">
             <PlusSign className="w-[28px] h-[28px]" />
           </Button>
           <TextInput
-            className="border-b-[1px] border-surface-0 placeholder:text-text text-text"
+            className="border-b-[1px] w-[164px] p-[15px] !h-[52px] text-[14px] border-surface-0 placeholder:text-text text-text"
             name="نقد و نکات"
             placeholder="نام کلمه یا عدد ریفرنس"
           />
           <TextInput
-            className="border-b-[1px] border-surface-0 placeholder:text-text text-text"
+            className="border-b-[1px] text-[14px] !p-[15px] !h-[52px] border-surface-0 placeholder:text-text text-text"
             name="نقد و نکات"
             placeholder="توضیح کلمه تخصصی یا لینک ..."
           />
-          <Button className="bg-blue w-full h-[52px] font-bold">
-            ارسال نقد
-          </Button>
         </div>
+        <Button className="bg-blue w-full h-[52px] font-bold rounded-[10px]">
+          ارسال نقد
+        </Button>
       </section>
 
       <section className="px-[60px] py-[30px] rounded-[10px] bg-crust">
@@ -108,6 +114,7 @@ export default function ReviewSection() {
 
       <article className=" w-full flex flex-col ">
         <header className="flex justify-between  rounded-tr-full rounded-br-full rounded-tl-[10px] p-[10px]  bg-crust">
+          {/* اینجا باید سمت چپ بالای هدر گردی بگیره اما خب نمیگیره */}
           <div className="flex justify-center gap-[10px] items-center">
             <img
               src={Profile}
@@ -141,7 +148,7 @@ export default function ReviewSection() {
             می‌تواند با ارائه مثال‌های عملی و مستندات بیشتر، جذاب‌تر و آموزنده‌تر
             شود. نقد مقاله در مورد بش
           </p>
-          <section className="flex items-center justify-between border-b-[1px] border-t-[1px] border-surface-1 px-[10px] py-[11.5px]">
+          <section className="flex items-center justify-between border-b-[1px] border-t-[1px] border-base px-[10px] py-[11.5px]">
             <div className="flex ">
               <Button className="flex rounded-r-[10px] justify-center items-center bg-mantle gap-[6px] text-subtext-0 border-l-[1px] border-surface-1 p-[10px] text-text">
                 <Comments />
@@ -151,23 +158,17 @@ export default function ReviewSection() {
                 <div className="flex flex-col justify-center gap-[5px] text-subtext-0 ">
                   <IncreaseArrow className="w-[11px] h-[6px]   " />
                   <DecreaseArrow className="w-[11px] h-[6px]  " />
+                  {/* دوستان ببینید می تونید به این آیکون ها رنگ بدید یا نه  */}
                 </div>
-                دیدن پاورقی ها
+                دیدن پاورقی
               </Button>
             </div>
-            <div className="flex gap-x-[-50px]">
+            <div className="flex">
               <img
-                style={{
-                  WebkitMaskImage:
-                    "radial-gradient(circle at center, black 70%, transparent 100%)",
-                  maskImage:
-                    "radial-gradient(circle at center, black 70%, transparent 100%)",
-                  WebkitMaskRepeat: "no-repeat",
-                  maskRepeat: "no-repeat",
-                }}
+                // اطراف این عکس ها هم باید بلری بشه حالت محو شده بگیره
                 src={Profile}
                 alt="profile"
-                className=" h-[38px] w-[38px] rounded-full object-cover mx-[-20px] "
+                className=" h-[38px] w-[38px] rounded-full object-cover mx-[-20px] z-0 "
               />
               <img
                 src={Profile2}
