@@ -9,8 +9,8 @@ import {
 } from "react-router";
 import TailwindCss from "~/assets/styles/main.css?url";
 import session from "./.server/session";
-
 import type { Route } from "./+types/root";
+import { GlobalStoreProvider } from "./store/StoreProvider";
 
 export async function loader(args: Route.LoaderArgs) {
   const { request } = args;
@@ -46,7 +46,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <GlobalStoreProvider> {children}</GlobalStoreProvider>
         <ScrollRestoration />
         <Scripts />
       </body>

@@ -1,23 +1,31 @@
-import type { Dispatch, SetStateAction } from "react";
+import type { ReactNode } from "react";
 import {
   FaArrowRightToBracket,
+  FaBars,
   FaBook,
   FaMagnifyingGlass,
 } from "react-icons/fa6";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { twJoin } from "tailwind-merge";
 import Logo from "~/assets/images/cs12-logo.svg?react";
 import Button from "~/components/Button";
 import twMerge from "~/lib/tw-merge";
+import { useGlobalStore } from "~/store/StoreProvider";
 import MainThemeSwitch from "./MainThemeSwitch";
 
-type Props = {
-  mobileSidebarOpen: boolean;
-  onMobileSidebarChange: Dispatch<SetStateAction<boolean>>;
+const PATH_ICONS: Record<string, ReactNode> = {
+  "/": <FaBook size={16} />,
+  "/user-panel": <FaBars size={16} />,
 };
 
-function MainTopbar(props: Props) {
-  const { onMobileSidebarChange, mobileSidebarOpen } = props;
+function MainTopbar() {
+  const sideBarOpen = useGlobalStore((state) => state.isSideBarOpen);
+  const toggleIsSideBarOpen = useGlobalStore(
+    (state) => state.toggleIsSideBarOpen,
+  );
+
+  const { pathname } = useLocation();
+  const matchedIcon = PATH_ICONS[pathname];
 
   return (
     <header
@@ -26,15 +34,8 @@ function MainTopbar(props: Props) {
         "flex items-center px-4 [&>button]:bg-base",
         "gap-3.5 [&>*]:shrink-0 lg:px-7.5",
         "[&>button]:text-overlay-1 relative",
-        "z-11 select-none pointer-events-none",
+        "z-11 ",
       )}
-      style={
-        {
-          WebkitUserSelect: "none",
-          userSelect: "none",
-          ["WebkitUserDrag"]: "none",
-        } as any
-      }
     >
       <Logo />
 
@@ -65,17 +66,19 @@ function MainTopbar(props: Props) {
 
       <div aria-hidden className="grow" />
 
-      <span className="blur-xs">
-        <Button
-          variant="none"
-          onPress={() => onMobileSidebarChange((prev) => !prev)}
-          className={twMerge(
-            "p-3 rounded-lg lg:hidden select-none ",
-            mobileSidebarOpen && "!bg-sapphire !text-crust",
-          )}
-        >
-          <FaBook size={16} />
-        </Button>
+      <span className="">
+        {matchedIcon && (
+          <Button
+            variant="none"
+            onPress={() => toggleIsSideBarOpen()}
+            className={twMerge(
+              "p-3 rounded-lg lg:hidden select-none ",
+              sideBarOpen && "bg-sapphire text-crust",
+            )}
+          >
+            {matchedIcon}
+          </Button>
+        )}
         <Button variant="none" className="p-3 rounded-lg cursor-default">
           <FaMagnifyingGlass size={16} />
         </Button>
