@@ -83,11 +83,19 @@ function MainTopbar(props: Props) {
               onBlur={() => setFocused(false)}
               onFocus={() => setFocused(true)}
               placeholder={focused ? "جستوجو کنید" : ""}
-              className="w-10 h-10 rounded-lg bg-base absolute left-0 focus:p-2.5 placeholder:text-xs text-xs placeholder:text-text focus:outline-none focus:w-[245px]  lg:focus:w-[660px] transition-all duration-200 ease-in-out cursor-pointer"
+              className={twJoin(
+                "w-10 h-10 rounded-lg bg-base absolute left-0",
+                "focus:p-2.5 placeholder:text-xs text-xs placeholder:text-text",
+                "focus:outline-none focus:w-[245px] lg:focus:w-[660px]",
+                "transition-all duration-200 ease-in-out cursor-pointer",
+              )}
             />
             <FaMagnifyingGlass
               size={16}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer pointer-events-none"
+              className={twJoin(
+                "absolute top-1/2 left-1/2 -translate-x-1/2",
+                "-translate-y-1/2 cursor-pointer pointer-events-none",
+              )}
             />
           </TextField>
 
