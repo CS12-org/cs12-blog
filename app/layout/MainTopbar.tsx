@@ -1,26 +1,39 @@
-import { type Dispatch, type SetStateAction, useState } from "react";
+import { type ReactNode, useState } from "react";
 import { Input, TextField } from "react-aria-components";
 import {
   FaArrowRightToBracket,
+  FaBars,
   FaBook,
   FaMagnifyingGlass,
 } from "react-icons/fa6";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { twJoin } from "tailwind-merge";
 import Logo from "~/assets/images/cs12-logo.svg?react";
 import Button from "~/components/Button";
 import twMerge from "~/lib/tw-merge";
+import { useGlobalStore } from "~/store/StoreProvider";
 import MainThemeSwitch from "./MainThemeSwitch";
 
 type Props = {
-  mobileSidebarOpen: boolean;
-  onMobileSidebarChange: Dispatch<SetStateAction<boolean>>;
   isBlured?: boolean;
 };
 
+const PATH_ICONS: Record<string, ReactNode> = {
+  "/": <FaBook size={16} />,
+  "/user-panel": <FaBars size={16} />,
+};
+
 function MainTopbar(props: Props) {
-  const { onMobileSidebarChange, mobileSidebarOpen, isBlured = false } = props;
+  const { isBlured = false } = props;
   const [focused, setFocused] = useState(false);
+
+  const sideBarOpen = useGlobalStore((state) => state.isSideBarOpen);
+  const toggleIsSideBarOpen = useGlobalStore(
+    (state) => state.toggleIsSideBarOpen,
+  );
+
+  const { pathname } = useLocation();
+  const matchedIcon = PATH_ICONS[pathname];
 
   return (
     <header
@@ -29,6 +42,8 @@ function MainTopbar(props: Props) {
         "flex items-center px-4",
         "gap-3.5 [&>*]:shrink-0 lg:px-7.5",
         "relative z-11 select-none",
+        "[&>button]:text-overlay-1",
+        "z-11 ",
       )}
     >
       <Logo />
@@ -66,17 +81,19 @@ function MainTopbar(props: Props) {
 
         <div aria-hidden className="grow" />
 
-        <span className="flex gap-x-4">
-          <Button
-            variant="none"
-            onPress={() => onMobileSidebarChange((prev) => !prev)}
-            className={twMerge(
-              "p-3 rounded-lg lg:hidden",
-              mobileSidebarOpen && "bg-sapphire text-crust",
-            )}
-          >
-            <FaBook size={16} />
-          </Button>
+        <div className="flex gap-x-4">
+          {matchedIcon && (
+            <Button
+              variant="none"
+              onPress={() => toggleIsSideBarOpen()}
+              className={twMerge(
+                "p-3 rounded-lg lg:hidden select-none ",
+                sideBarOpen && "bg-sapphire text-crust",
+              )}
+            >
+              {matchedIcon}
+            </Button>
+          )}
           <TextField className="relative w-10 h-10">
             <Input
               aria-label="سرچ بار"
@@ -106,7 +123,7 @@ function MainTopbar(props: Props) {
           >
             <FaArrowRightToBracket size={16} />
           </Button>
-        </span>
+        </div>
 
         <span className="select-none">
           <MainThemeSwitch />

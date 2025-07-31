@@ -1,17 +1,11 @@
-import { useState } from "react";
 import ArticleCategories from "~/components/Home/ArticleCategories";
 import Post from "~/components/Home/Post";
 import WeeklyChallenge from "~/components/Home/WeeklyChallenge";
 
 function Home() {
-  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
-
   return (
     <div className="flex items-start gap-5">
-      <ArticleCategories
-        mobileSidebarOpen={mobileSidebarOpen}
-        onMobileSidebarChange={setMobileSidebarOpen}
-      />
+      <ArticleCategories />
 
       <div className="grow overflow-hidden">
         <WeeklyChallenge />
