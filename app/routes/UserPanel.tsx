@@ -1,27 +1,17 @@
+import { Text } from "react-aria-components";
+import PlusSign from "~/assets/images/plus-sign.svg?react";
+import Button from "~/components/Button";
+import { SettingCheckboxOption } from "~/components/UserPanel/SettingCheckbox";
+import { TextInput } from "~/components/UserPanel/TextFeild";
+import MyRadioGroup from "~/components/UserPanel/ThemeSetting";
 import UserPanelList from "~/components/UserPanel/UserPanelList";
 import Profile from "../assets/images/user-profile.png";
-import PlusSign from "~/assets/images/plus-sign.svg?react";
-import ThemeSetting from "~/components/UserPanel/ThemeSetting";
-import {
-  SettingCheckboxGroup,
-  SettingCheckboxOption,
-} from "~/components/UserPanel/SettingCheckbox";
-import MyRadioGroup from "~/components/UserPanel/ThemeSetting";
-import { TextInput } from "~/components/UserPanel/TextFeild";
-import Button from "~/components/Button";
-import Cs12Logo from "../components/Global/Icons/cs12-logo.svg?react";
-import { Text } from "react-aria-components";
-import { useState } from "react";
+import Cs12Logo from "../components/Icons/cs12-logo.svg?react";
 
 function UserPanel() {
-  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
-
   return (
     <section className="flex gap-x-5 w-full items-start">
-      <UserPanelList
-        mobileSidebarOpen={mobileSidebarOpen}
-        onMobileSidebarChange={setMobileSidebarOpen}
-      />
+      <UserPanelList />
 
       <main className="flex flex-col gap-2.5 w-full text-subtext-1">
         <header className="flex justify-between items-center">
@@ -90,7 +80,7 @@ function UserPanel() {
             <Button className="h-8 w-8 bg-mantle flex justify-center items-center rounded-md">
               <PlusSign />
             </Button>
-            <Text className="bg-mantle p-2 w-full rounded-md bg-mantle h-9 text-xs">
+            <Text className="bg-mantle p-2 w-full rounded-md h-9 text-xs">
               زبان ها و تکنولوژی هایی که بلد هستید رو وارد کنید. (به زبان
               انگلیسی) : مثال c programming language
             </Text>
@@ -100,7 +90,7 @@ function UserPanel() {
             <Button className="h-8 w-8 bg-mantle flex justify-center items-center rounded-md">
               <PlusSign />
             </Button>
-            <Text className="bg-mantle p-2 w-full rounded-md bg-mantle h-9 text-xs">
+            <Text className="bg-mantle p-2 w-full rounded-md h-9 text-xs">
               لینک سوشال میدیا هایی که دارید رو اینجا بزارید.
             </Text>
           </article>
@@ -124,11 +114,11 @@ function UserPanel() {
               شود؟
             </SettingCheckboxOption>
             <SettingCheckboxOption value="sss1">
-              آیا قسمت زبان‌هایی که بلدید در صفحه پروفایلتون توسط دیگران دیده
+              آیا قسمت زبانهایی که بلدید در صفحه پروفایلتون توسط دیگران دیده
               شود؟
             </SettingCheckboxOption>
             <SettingCheckboxOption value="sss2">
-              آیا قسمت هایلایت‌ها و یادداشت‌های شیر شده توسط شما در قسمت
+              آیا قسمت هایلایتها و یادداشتهای شیر شده توسط شما در قسمت
               پروفایلتون قابل مشاهده باشد؟
             </SettingCheckboxOption>
             <SettingCheckboxOption value="sss3">
@@ -139,7 +129,7 @@ function UserPanel() {
               آیا تصویر پروفایل شما برای دیگران قابل مشاهده باشد؟
             </SettingCheckboxOption>
             <SettingCheckboxOption value="ss5">
-              آیا امتیاز و جایگاه شما در چالش‌های هفتگی قابل مشاهده باشد؟
+              آیا امتیاز و جایگاه شما در چالشهای هفتگی قابل مشاهده باشد؟
             </SettingCheckboxOption>
             <SettingCheckboxOption value="sss6">
               آیا صفحه پروفایل برای شما ساخته شود؟
@@ -170,7 +160,7 @@ function UserPanel() {
                 <TextInput name="ایمیل" placeholder="ایمیل" />
               </div>
               <div className="col-span-4">
-                <Button className="bg-crust border border-red border-2 w-full p-2 h-9 text-red text-xs">
+                <Button className="bg-crust border-red border-2 w-full p-2 h-9 text-red text-xs">
                   تغییر رمز عبور
                 </Button>
               </div>
