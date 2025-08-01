@@ -87,7 +87,7 @@ function MainTopbar(props: Props) {
               variant="none"
               onPress={() => toggleIsSideBarOpen()}
               className={twMerge(
-                "p-3 rounded-lg lg:hidden select-none ",
+                "p-3 rounded-lg lg:hidden select-none bg-base",
                 sideBarOpen && "bg-sapphire text-crust",
               )}
             >
