@@ -1,48 +1,48 @@
-import { Tab, TabList, TabPanel, Tabs } from "react-aria-components";
 import { BiMessageAltDetail } from "react-icons/bi";
 import { CiBookmark, CiPlay1 } from "react-icons/ci";
 import { IoShareSocialOutline } from "react-icons/io5";
 import Button from "~/components/Button";
-import Highlights from "~/components/Posts/HighLights";
-import ReviewSection from "~/components/Posts/ReviewSection";
+import LicenceMark from "~/components/Posts/LicenceMark";
+import PostAuthor from "~/components/Posts/PostAuthor";
+import PostNavigation from "~/components/Posts/PostNavigation";
+import PostTabs from "~/components/Posts/PostTabs";
 import Hands from "../assets/images/hands-celebrate.svg";
 import postImage from "../assets/images/postImage.png?url";
-
 export default function PostPage() {
   return (
-    <section className="text-white  w-full">
+    <section className="text-white  w-full flex flex-col gap-[10px] ">
       <section className="bg-crust mb-[20px] rounded-[10px]">
-        <header className="flex flex-col gap-y-[10px] ">
+        <header className="flex flex-col  ">
           <img
             src={postImage}
             alt="post"
             className=" rounded-tl-[10px] rounded-tr-[10px]"
           />
-          <h1 className="font-extrabold text-5xl pb-[10px] px-[30px]">
+          <h1 className="font-extrabold text-[18px]  lg:text-5xl px-[10px] py-[5px]  lg:px-[30px] lg:py-[25px] lg:pt-[15px] h-auto">
             این یک پست هست
           </h1>
         </header>
 
-        <section className="flex justify-between items-center px-[30px] bg-mantle py-[10px] ">
+        <section className="flex justify-between items-center p-[10px] lg:px-[30px] bg-mantle lg:py-[10px] ">
           <div className="flex gap-[10px] ">
-            <Button className="h-[48px] w-[48px] border-surface-0 border-[1px] bg-base rounded-[10px] flex justify-center items-center">
-              <CiPlay1 className="text-overlay-1  h-[18px] w-[20px] font-extrabold" />
+            <Button className="lg:h-[48px] lg:w-[48px] h-[30px] w-[30px] border-surface-0 border-[1px] bg-base rounded-[10px] flex justify-center items-center">
+              <CiPlay1 className="text-overlay-1  lg:h-[18px] lg:w-[20px] h-[16px] w-[16px] font-extrabold" />
             </Button>
-            <Button className="h-[48px] w-[48px] border-surface-0 border-[1px] bg-base rounded-[10px] flex justify-center items-center">
-              <CiBookmark className="text-overlay-1  h-[18px] w-[20px] font-extrabold" />
+            <Button className="lg:h-[48px] lg:w-[48px] h-[30px] w-[30px] border-surface-0 border-[1px] bg-base rounded-[10px] flex justify-center items-center">
+              <CiBookmark className="text-overlay-1 h-[16px] w-[18px]  lg:h-[18px] lg:w-[20px] font-extrabold" />
             </Button>
             <span className="self-center text-sapphire font-extrabold">|</span>{" "}
-            <Button className="h-[48px] w-[48px] border-surface-0 border-[1px] bg-base rounded-full flex justify-center items-center">
-              <BiMessageAltDetail className="text-overlay-1  h-[18px] w-[20px] font-extrabold" />
+            <Button className="lg:h-[48px] lg:w-[48px] h-[30px] w-[30px] border-surface-0 border-[1px] bg-base rounded-full flex justify-center items-center">
+              <BiMessageAltDetail className="text-overlay-1 h-[16px] w-[18px]  lg:h-[18px] lg:w-[20px] font-extrabold" />
             </Button>
           </div>
-          <Button>MIT</Button>
+          <LicenceMark />
         </section>
 
-        <article className="px-[30px] py-[20px]">
-          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
-          استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
-          ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
+        <article className="lg:px-[30px] p-[10px] lg:py-[20px] lg:text-[16px] text-[14px]">
+          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و ب استفاده
+          از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
+          سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
           کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی
           در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می
           طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی
@@ -53,11 +53,12 @@ export default function PostPage() {
           قرار گیرد.
         </article>
 
-        <section className="py-[10px] ">
+        <section className="pt-[10px] ">
           <img src={postImage} alt="post" className=" w-full " />
-          <div className="px-[30px] py-[10px] flex justify-between ">
-            <Button className="h-[48px] w-[48px] border-surface-0 border-[1px] bg-base rounded-[10px] flex justify-center items-center">
-              <IoShareSocialOutline className="text-overlay-1  h-[21px] w-[21px] font-extrabold" />
+
+          <div className="lg:px-[30px] px-[10px] py-[10px] flex justify-between ">
+            <Button className="lg:h-[48px] lg:w-[48px] h-[30px] w-[30px] border-surface-0 border-[1px] bg-base rounded-[10px] flex justify-center items-center">
+              <IoShareSocialOutline className="text-overlay-1 h-[15px] w-[15px] lg:h-[21px] lg:w-[21px] font-extrabold" />
             </Button>
             <div className="flex gap-[6px]">
               <span className="self-center text-[12px] text-subtext-1 ">
@@ -67,7 +68,7 @@ export default function PostPage() {
                 <img
                   src={Hands}
                   alt="clabbing hands"
-                  className="w-[25px] h-[28px]"
+                  className="lg:w-[25px] lg:h-[28px] w-[18px] h-[21px] mx-[5px] lg:mx-[0px]"
                 />{" "}
               </Button>
             </div>
@@ -75,34 +76,9 @@ export default function PostPage() {
         </section>
       </section>
 
-      <Tabs className="flex flex-col gap-y-[10px]">
-        <TabList className="flex rounded-[10px] gap-x-[10px] p-[10px] bg-crust rouned-[10px]">
-          <Tab
-            id="highlights"
-            className="bg-base h-[48px] w-[143px] text-[12px] font-bold flex justify-center items-center rounded-[5px]"
-          >
-            هایلایت ها{" "}
-          </Tab>
-          <Tab
-            id="comments"
-            className="bg-base h-[48px] w-[143px] text-[12px] font-bold flex justify-center items-center rounded-[5px]"
-          >
-            نظرات
-          </Tab>
-          <Tab
-            id="review"
-            className="bg-base h-[48px] w-[143px] text-[12px] font-bold flex justify-center items-center rounded-[5px]"
-          >
-            نقد و بررسی
-          </Tab>
-        </TabList>
-        <TabPanel id="highlights">
-          <Highlights />
-        </TabPanel>
-        <TabPanel id="review">
-          <ReviewSection />
-        </TabPanel>
-      </Tabs>
+      <PostAuthor />
+      <PostNavigation />
+      <PostTabs />
     </section>
   );
 }

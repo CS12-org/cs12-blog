@@ -13,7 +13,7 @@ export function TextInput({ label, name, placeholder, className = "" }: Props) {
       <Label className="text-sm font-medium">{label}</Label>
       <Input
         placeholder={placeholder}
-        className={`bg-mantle  rounded-md  text-xs focus:outline-none focus:ring-1 focus:ring-lavender ${className}`}
+        className={`bg-mantle border-b-[1px]   border-surface-0 rounded-md   focus:outline-none focus:ring-1 focus:ring-lavender ${className}`}
       />
     </TextField>
   );
