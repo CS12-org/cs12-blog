@@ -2,6 +2,7 @@ import { BiMessageAltDetail } from "react-icons/bi";
 import { CiBookmark, CiPlay1 } from "react-icons/ci";
 import { IoShareSocialOutline } from "react-icons/io5";
 import Button from "~/components/Button";
+import ShareHighlightsPrompt from "~/components/FreeSections/ShareHighlightsPrompt";
 import LicenceMark from "~/components/Posts/LicenceMark";
 import PostAuthor from "~/components/Posts/PostAuthor";
 import PostNavigation from "~/components/Posts/PostNavigation";
@@ -75,7 +76,7 @@ export default function PostPage() {
           </div>
         </section>
       </section>
-
+      <ShareHighlightsPrompt />
       <PostAuthor />
       <PostNavigation />
       <PostTabs />
