@@ -4,7 +4,8 @@ export default [
   layout("layout/Main.tsx", [
     route("/", "routes/Home.tsx"),
     route("/user-panel", "routes/UserPanel.tsx"),
-    route("/usersave-post", "routes/UserSavedpost.tsx"),
+    route("/usersave-post", "routes/UserSavePost.tsx"),
+    route("/user-level", "routes/UserLevel.tsx"),
     route("/*", "routes/NotFoundPage.tsx"),
   ]),
 

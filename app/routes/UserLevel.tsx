@@ -1,4 +1,4 @@
-import UserSaveList from "~/components/UserPanel/UserSaveList";
+import UserSaveList from "~/components/UserPanel/UserLevelList";
 import Profile from "../assets/images/user-profile.png";
 import PlusSign from "~/assets/images/plus-sign.svg?react";
 import ThemeSetting from "~/components/UserPanel/ThemeSetting";
@@ -13,7 +13,7 @@ import Cs12Logo from "../components/Global/Icons/cs12-logo.svg?react";
 import { Text } from "react-aria-components";
 import { useState } from "react";
 
-function UserPanel() {
+function UserLevel() {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
   return (
@@ -199,4 +199,4 @@ function UserPanel() {
   );
 }
 
-export default UserPanel;
+export default UserLevel;

@@ -43,6 +43,11 @@ const groups = [
     icon: BiMessageAltDetail,
     title: "نظرات و پرسش و پاسخ",
   },
+  {
+    slug: "#",
+    icon: BiVector,
+    title: "درچه سطحی هستم",
+  },
 ];
 
 function UserSaveList(props: Props) {
