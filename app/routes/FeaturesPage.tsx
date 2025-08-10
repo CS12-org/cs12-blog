@@ -1,5 +1,7 @@
+import { Focusable, TooltipTrigger } from "react-aria-components";
 import { FaRegClock } from "react-icons/fa6";
 import { TbApi } from "react-icons/tb";
+import Tooltip from "~/components/Tooltip";
 import Check from "../assets/images/check.svg?react";
 import Dottcircle from "../assets/images/dottcircle.svg?react";
 import type { Route } from "./+types/FeaturesPage";
@@ -13,72 +15,36 @@ enum FeatureStatus {
 
 const FeatureStatusIcon = {
   [FeatureStatus.COMPLETED]: (
-    <section
-      className="relative group inline-flex items-center"
-      aria-label="Feature: تکمیل شده"
-    >
-      <span
-        className="absolute max-w-[100px] bg-[#101120] text-[10px] font-semibold whitespace-nowrap 
-                       bottom-[calc(100%+4px)] group-hover:bottom-[calc(100%+16px)] px-2 py-1 rounded 
-                       text-center left-1/2 -translate-x-1/2 pointer-events-none transition-all 
-                       duration-700 ease-in-out opacity-0 group-hover:opacity-100 invisible 
-                       group-hover:visible border-2 border-[#24273a] "
-      >
-        ساخته شده
-      </span>
-      <Check className="ml-[-1px]" aria-hidden="true" />
-    </section>
+    <TooltipTrigger delay={0}>
+      <Tooltip offset={16}>ساخته شده</Tooltip>
+      <Focusable>
+        <Check className="ml-[-1px]" aria-hidden="true" />
+      </Focusable>
+    </TooltipTrigger>
   ),
   [FeatureStatus.PENDING]: (
-    <section
-      className="relative group inline-flex items-center"
-      aria-label="Feature: در حال انجام"
-    >
-      <span
-        className="absolute max-w-[100px] bg-[#101120] text-[10px] font-semibold whitespace-nowrap 
-                       bottom-[calc(100%+4px)] group-hover:bottom-[calc(100%+16px)] px-2 py-1 rounded 
-                       text-center left-1/2 -translate-x-1/2 pointer-events-none transition-all 
-                       duration-700 ease-in-out opacity-0 group-hover:opacity-100 invisible 
-                       group-hover:visible border-2 border-[#24273a] "
-      >
-        در حال انجام
-      </span>
-      <FaRegClock className="h-5.5 w-5.5 text-yellow" aria-hidden="true" />
-    </section>
+    <TooltipTrigger delay={0}>
+      <Tooltip offset={16}>در حال انجام</Tooltip>
+      <Focusable>
+        <FaRegClock className="h-5.5 w-5.5 text-yellow" aria-hidden="true" />
+      </Focusable>
+    </TooltipTrigger>
   ),
   [FeatureStatus.NOT_YET]: (
-    <section
-      className="relative group inline-flex items-center"
-      aria-label="Feature: هنوز شروع نشده"
-    >
-      <span
-        className="absolute max-w-[100px] bg-[#101120] text-[10px] font-semibold whitespace-nowrap 
-                       bottom-[calc(100%+4px)] group-hover:bottom-[calc(100%+16px)] px-2 py-1 rounded 
-                       text-center left-1/2 -translate-x-1/2 pointer-events-none transition-all 
-                       duration-700 ease-in-out opacity-0 group-hover:opacity-100 invisible 
-                       group-hover:visible border-2 border-[#24273a] "
-      >
-        هنوز شروع نشده
-      </span>
-      <Dottcircle className="ml-[-3px]" aria-hidden="true" />
-    </section>
+    <TooltipTrigger delay={0}>
+      <Tooltip offset={16}>هنوز شروع نشده</Tooltip>
+      <Focusable>
+        <Dottcircle className="ml-[-3px]" aria-hidden="true" />
+      </Focusable>
+    </TooltipTrigger>
   ),
   [FeatureStatus.API]: (
-    <section
-      className="relative group inline-flex items-center"
-      aria-label="Feature: در مرحله نهایی"
-    >
-      <span
-        className="absolute max-w-[100px] bg-[#101120] text-[10px] font-semibold whitespace-nowrap 
-                       bottom-[calc(100%+4px)] group-hover:bottom-[calc(100%+16px)] px-2 py-1 rounded 
-                       text-center left-1/2 -translate-x-1/2 pointer-events-none transition-all 
-                       duration-700 ease-in-out opacity-0 group-hover:opacity-100 invisible 
-                       group-hover:visible border-2 border-[#24273a] "
-      >
-        در مرحله نهایی
-      </span>
-      <TbApi className="h-5.5 w-5.5 text-teal" aria-hidden="true" />
-    </section>
+    <TooltipTrigger delay={0}>
+      <Tooltip offset={16}>در مرحله نهایی</Tooltip>
+      <Focusable>
+        <TbApi className="h-5.5 w-5.5 text-teal" aria-hidden="true" />
+      </Focusable>
+    </TooltipTrigger>
   ),
 } as const;
 
@@ -112,7 +78,7 @@ const pageFeatures = [
     status: FeatureStatus.NOT_YET,
   },
   {
-    title: "تِرَک پیج",
+    title: "ترک پیج",
     status: FeatureStatus.PENDING,
   },
   {
@@ -138,7 +104,7 @@ const coreFeatures = [
     desc: "تصمیم گرفتیم برای بهتر کردن فضای فنی کامیونیتی یک سکشن به اسم نقد و بررسی در نظر بگیریم که افراد بتونند درحقیقت زیر هر پست یه پست بنویسن که پست رو نقد و بررسی کنه عکس داشته باشه پاورقی داشته باشه و حتی بشه روش کامنت گذاشت و بحث کرد و حتی بشه ریتش کرد.",
   },
   {
-    title: "روتین سازی + تِرَک کردن آموزش",
+    title: "روتین سازی + ترک کردن آموزش",
     status: FeatureStatus.PENDING,
     desc: "وقتی قراره یه چیزی رو یاد بگیریم بهتره که سشن های یادگیری اینجوری باشند که بشه به شکل یه روتین قابل انجام بهشون نگاه کرد و در نهایت بتونیم وضعیت چیزایی که یادگرفتیم رو بدونیم و از همه مهم تر مدام پروژه بزنیم.",
   },

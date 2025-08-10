@@ -20,7 +20,7 @@ function MainThemeSwitch() {
 
   return (
     <Button
-      aria-label="Button: Switch Theme"
+      aria-label="دکمه : تغییر تم سایت"
       variant="none"
       isDisabled={true}
       onPress={pressHandler}
